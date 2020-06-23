@@ -19,9 +19,8 @@ public class Main {
         Iniciar();
     }
     public static void Iniciar(){
-        Controlador controlador = new Controlador();
         Home home = new Home();
-        LogCliente logcliente = new LogCliente();
+        home.setVisible(true);
         }
     public static void pruebacambiar(){
         //controlador.CambiarHomeACliente(home, logcliente);
