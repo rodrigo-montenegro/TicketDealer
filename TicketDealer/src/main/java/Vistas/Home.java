@@ -38,8 +38,18 @@ public class Home extends javax.swing.JFrame {
         jLabel1.setText("Ticket Dealer");
 
         jButton1.setText("Admin");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Empleado");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Cliente");
         jButton3.setMaximumSize(new java.awt.Dimension(61, 23));
@@ -89,11 +99,25 @@ public class Home extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton3LogCliente(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3LogCliente
-        Login login1 = new Login();
-        login1.setVisible(true);
+        Login login = new Login();
+        login.setVisible(true);
         this.setVisible(false);
         //Vistas.LogCliente.setVisible(true);
     }//GEN-LAST:event_jButton3LogCliente
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+          Login login = new Login();
+        login.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+          Login login = new Login();
+        login.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
