@@ -5,28 +5,29 @@
  */
 package Model;
 
+import java.sql.CallableStatement;
+import java.sql.Date;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
 
 /**
  *
  * @author Esteban
  */
 public class Cargador {
-    private ArrayList<ViewObserver> observers;
+    //private ArrayList<ViewObserver> observers;
 	CallableStatement cs;
 	Connect cn;
     ResultSet rs ;
     PreparedStatement ps;
     Statement s ;
-    ArrayList<Compra> compraEmpleado;
-    ArrayList<Compra> compraCliente;
     CargaBox cb;
     
 	public Cargador() throws SQLException{
-		observers= new ArrayList<ViewObserver>();
-		compraEmpleado=new ArrayList<Compra>();
-		compraCliente=new ArrayList<Compra>();
+	//	observers= new ArrayList<ViewObserver>();
         cn = new Connect();
         cb= new CargaBox();           
 	}
@@ -71,7 +72,7 @@ public class Cargador {
         cs.setInt("Cantidad", cant);
         cs.executeUpdate();
         System.out.println("c quito");
-        this.notifyObserver();
+   //     this.notifyObserver();
         }
     
     public void agregarStock(int idprod,int cant) throws SQLException{
@@ -81,7 +82,7 @@ public class Cargador {
         cs.setInt("Cantidad", cant);
         cs.executeUpdate();
         System.out.println("c agrego");
-        this.notifyObserver();
+       // this.notifyObserver();
         }
         
 	public void creaUser (String user,String pass, String tipo) throws SQLException{
@@ -130,7 +131,7 @@ public class Cargador {
         cs.setString("prodcoment", prodcoment);
         cs.executeUpdate();
         //System.out.println("c creo");
-        this.notifyObserver();
+       // this.notifyObserver();
         }
     
     public void borraProducto (int idProd) throws SQLException{
@@ -138,7 +139,7 @@ public class Cargador {
         cs.setInt("idprod", idProd);
         cs.executeUpdate();
         //System.out.println("c borro");
-        this.notifyObserver();
+     //   this.notifyObserver();
     }
         
     public int getIdProd() throws SQLException{
@@ -202,10 +203,10 @@ public class Cargador {
     	return cb;
     }
         
-    @Override
-	public void registerObserver(ViewObserver o) {
+  //  @Override
+	/*public void registerObserver(ViewObserver o) {
 		observers.add(o);			
-	}
+        }
 
 	@Override
 	public void removeObserver(ViewObserver o) {
@@ -221,7 +222,7 @@ public class Cargador {
 			ViewObserver observer = (ViewObserver) observers.get(i);
 			observer.update();
 		}
-	}
+	}*/
 		
 	public ResultSet getAsientos(int idPelicula) throws SQLException{
 		s = cn.getConnection().createStatement();
@@ -273,20 +274,7 @@ public class Cargador {
 		return rs;
 	}
 	
-	public void GuardarCompra(Compra objCompra){
-		compraCliente.add(objCompra);
-	}
 	
-	public void GuardarCompraEmpleado(Compra objCompra){
-		compraEmpleado.add(objCompra);
-	}
-	
-	public Compra getObjCompra(){
-		return compraCliente.get(0);
-	}
-	public Compra getObjCompraEmpleado(){
-		return compraEmpleado.get(0);
-	}
 	
 	public ResultSet getUsuarios() throws SQLException{
 		s = cn.getConnection().createStatement();
@@ -416,7 +404,7 @@ public class Cargador {
     	cs.setString(2, formaPago);
     	cs.setString(3, codCompra);
     	cs.executeUpdate();
-            notifyObserver();
+           // notifyObserver();
     }
     
     public ResultSet getTablaObserver() throws SQLException{

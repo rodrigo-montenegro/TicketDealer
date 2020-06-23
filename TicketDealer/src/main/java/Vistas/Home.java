@@ -17,6 +17,9 @@ public class Home extends javax.swing.JFrame {
     public Home() {
         initComponents();
         this.setVisible(true);
+        this.setLocationRelativeTo(null);
+        this.setDefaultCloseOperation(this.EXIT_ON_CLOSE);
+        this.setResizable(false);
     }
 
     /**
@@ -89,6 +92,8 @@ public class Home extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void LogCliente(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogCliente
+        Login1 login1 = new Login1();
+        login1.setVisible(true);
         this.setVisible(false);
         //Vistas.LogCliente.setVisible(true);
     }//GEN-LAST:event_LogCliente
