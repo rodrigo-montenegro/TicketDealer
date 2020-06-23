@@ -9,10 +9,10 @@ package Vistas;
  *
  * @author santi
  */
-public class ProcesarComprobante extends javax.swing.JPanel {
+public class ProcesarComprobante extends javax.swing.JFrame {
 
     /**
-     * Creates new form ProcesarComprobante
+     * Creates new form ProcesarComprobante1
      */
     public ProcesarComprobante() {
         initComponents();
@@ -27,48 +27,40 @@ public class ProcesarComprobante extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
-        Cargar = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
-        numeroCompra = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
+        metodoPago = new javax.swing.JTextField();
         Fecha = new javax.swing.JTextField();
+        Procesar = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         Descripcion = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
+        Cargar = new javax.swing.JTextField();
         Total = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
         cobradoPor = new javax.swing.JTextField();
+        numeroCompra = new javax.swing.JTextField();
         Pagado = new javax.swing.JTextField();
-        metodoPago = new javax.swing.JTextField();
-        Procesar = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
-        jButton1.setText("CARGAR");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        Cargar.setText("jTextField1");
-        Cargar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CargarActionPerformed(evt);
-            }
-        });
-
-        jLabel1.setText("N° COMPRA");
-
-        numeroCompra.setText("jTextField2");
-
-        jLabel2.setText("FECHA:");
+        metodoPago.setText("jTextField5");
 
         Fecha.setText("jTextField3");
         Fecha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 FechaActionPerformed(evt);
+            }
+        });
+
+        Procesar.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 24)); // NOI18N
+        Procesar.setText("PROCESAR");
+        Procesar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ProcesarActionPerformed(evt);
             }
         });
 
@@ -82,11 +74,29 @@ public class ProcesarComprobante extends javax.swing.JPanel {
 
         jLabel7.setText("COBRADO POR:");
 
+        jButton1.setText("CARGAR");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         jLabel8.setText("PAGADO");
+
+        Cargar.setText("jTextField1");
+        Cargar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CargarActionPerformed(evt);
+            }
+        });
 
         Total.setText("jTextField6");
 
+        jLabel1.setText("N° COMPRA");
+
         cobradoPor.setText("jTextField7");
+
+        numeroCompra.setText("jTextField2");
 
         Pagado.setText("jTextField8");
         Pagado.addActionListener(new java.awt.event.ActionListener() {
@@ -95,18 +105,10 @@ public class ProcesarComprobante extends javax.swing.JPanel {
             }
         });
 
-        metodoPago.setText("jTextField5");
+        jLabel2.setText("FECHA:");
 
-        Procesar.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 24)); // NOI18N
-        Procesar.setText("PROCESAR");
-        Procesar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ProcesarActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
@@ -146,7 +148,7 @@ public class ProcesarComprobante extends javax.swing.JPanel {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(cobradoPor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(353, 353, 353)))))
-                .addContainerGap(175, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -183,19 +185,13 @@ public class ProcesarComprobante extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Pagado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(Procesar)
                 .addGap(38, 38, 38))
         );
+
+        pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void CargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CargarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_CargarActionPerformed
 
     private void FechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FechaActionPerformed
         // TODO add your handling code here:
@@ -205,10 +201,53 @@ public class ProcesarComprobante extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_ProcesarActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void CargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CargarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CargarActionPerformed
+
     private void PagadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PagadoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_PagadoActionPerformed
 
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(ProcesarComprobante.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(ProcesarComprobante.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(ProcesarComprobante.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(ProcesarComprobante.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new ProcesarComprobante().setVisible(true);
+            }
+        });
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField Cargar;
