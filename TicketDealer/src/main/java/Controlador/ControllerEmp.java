@@ -9,6 +9,7 @@ import Model.Cargador;
 import Vistas.Home;
 import Vistas.HomeEmpleado;
 import Vistas.Login;
+import java.sql.SQLException;
 
 /**
  *
@@ -57,6 +58,47 @@ public class ControllerEmp {
 
 	@Override
 	public void cambiarAHome2(Home v) {//OK!
+	}
+        @Override
+	public void cambiarACompraTickets(CompraView c) {//OK!
+		c.setVisible(false);
+		CompraTickets_v1 ct;
+		try {
+			ct = new CompraTickets_v1(this);
+		} catch (SQLException e) {
+			ct=null;
+			e.printStackTrace();
+		}
+		ct.setVisible(true);
+	}
+
+	@Override
+	public void cambiarAPago(FormaPago fp) {//OK!
+		fp.setVisible(false);
+		Pago p= new Pago(this);
+		p.setVisible(true);
+	}
+
+	@Override
+	public void cambiarAFormaPago(Pago p) {//OK!
+		p.setVisible(false);
+		FormaPago fp=new FormaPago(this);
+		fp.setVisible(true);
+	}
+
+	@Override
+	public Cargador getModel() {//OK!
+		return model;
+	}
+
+	@Override
+	public boolean esValido(String a, String b) {
+		try{
+			return model.validarEmpleado(a,b);}
+		catch (SQLException e){
+			return false;
+		}
+		//return true;
 	}
 
 }
