@@ -51,6 +51,13 @@ public class ControllerAdmin implements ControllerInterface {
   }
 
   @Override
-	public Cargador getModel() {//OK!
-		return model;
+  public Cargador getModel() {// OK!
+    return model;
+  }
+
+  @Override
+	public void cambiarAHome2(Login l) {//OK!
+		l.setVisible(false);
+		HomeAdmin cs =new HomeAdmin(this);
+		cs.setVisible(true);
 	}
