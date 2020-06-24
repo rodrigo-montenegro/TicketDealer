@@ -3,4 +3,4 @@ language: java
 jdk:
 - openjdk8
 sudo: false
-script: mvn -f /TicketDealer clean verify
+script: mvn -f Perez1996/TicketDealer clean verify
