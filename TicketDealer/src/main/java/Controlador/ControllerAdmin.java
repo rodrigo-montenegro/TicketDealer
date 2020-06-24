@@ -30,5 +30,27 @@ public class ControllerAdmin implements ControllerInterface {
   }
 
   @Override
-	public void cambiarAHome2(Home v) {	//OK!
+  public void cambiarAHome2(Home v) { // OK!
+  }
+
+  @Override
+  public void cambiarAHome(Login l) { // OK!
+    l.setVisible(false);
+    Home h = new Home();
+    h.cambiarController(this);
+    // h.initComponents();
+    h.setVisible(true);
+  }
+
+  @Override
+  public void cambiarAPago(FormaPago fp) {// OK!
+  }
+
+  @Override
+  public void cambiarAFormaPago(Pago p) {// OK!
+  }
+
+  @Override
+	public Cargador getModel() {//OK!
+		return model;
 	}
