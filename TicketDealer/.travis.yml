@@ -3,4 +3,4 @@ language: java
 jdk:
 - openjdk8
 sudo: false
-script: mvn clean verify
+script: /TickerDealer/TickerDealer mvn clean verify
