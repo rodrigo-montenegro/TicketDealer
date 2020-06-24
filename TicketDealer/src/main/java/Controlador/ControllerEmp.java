@@ -7,6 +7,7 @@ package Controlador;
 
 import Model.Cargador;
 import Vistas.Home;
+import Vistas.HomeEmpleado;
 import Vistas.Login;
 
 /**
@@ -31,4 +32,31 @@ public class ControllerEmp {
         l.setVisible(true);
         //setborn("a");
 	}
+      //  @Override
+	public void cambiarAHome2(Login l) {//OK!
+		l.setVisible(false);
+		HomeEmpleado gc =new HomeEmpleado(this,this.getModel());
+		gc.setVisible(true);	
+	}
+	
+	//@Override
+	public void cambiarAHome(HomeEmpleado gc) {//OK!
+		gc.setVisible(false);
+		Home h= new Home();
+		h.cambiarController(this);
+		//h.initComponents();
+		h.setVisible(true);
+	}
+	
+	//@Override
+	public void cambiarAHome2(CompraTickets_v1 ct) {
+		ct.setVisible(false);
+		HomeEmpleado gc =new HomeEmpleado(this,this.getModel());
+		gc.setVisible(true);
+	}
+
+	@Override
+	public void cambiarAHome2(Home v) {//OK!
+	}
+
 }
