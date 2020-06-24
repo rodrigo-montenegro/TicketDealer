@@ -10,9 +10,6 @@ import Vistas.*;
  *
  * @author macbook
  */
-public class Controlador {
-    public void CambiarHomeACliente(Home home, LogCliente logcliente){
-        home.setVisible(false);
-        logcliente.setVisible(true);
-    }
+public class ControllerCliente {
+    //
 }
