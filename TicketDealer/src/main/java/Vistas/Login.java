@@ -5,6 +5,8 @@
  */
 package Vistas;
 
+import Controlador.ControllerEmp;
+
 /**
  *
  * @author Esteban
@@ -16,6 +18,10 @@ public class Login extends javax.swing.JFrame {
      */
     public Login() {
         initComponents();
+    }
+
+    public Login(ControllerEmp aThis) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     /**

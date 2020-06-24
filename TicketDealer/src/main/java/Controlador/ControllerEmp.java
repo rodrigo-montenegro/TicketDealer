@@ -5,10 +5,30 @@
  */
 package Controlador;
 
+import Model.Cargador;
+import Vistas.Home;
+import Vistas.Login;
+
 /**
  *
  * @author Esteban
  */
 public class ControllerEmp {
-    
+    Cargador model;
+    Home view;
+	
+	public ControllerEmp(Cargador model, Home view){
+		this.model=model;
+		this.view=view;
+	}
+      //  @Override
+	public void iniciar() {//OK!
+	}
+
+        public void cambiarALogin(Home v) {//OK!
+		v.setVisible(false);
+		Login l = new Login(this);
+        l.setVisible(true);
+        //setborn("a");
+	}
 }
