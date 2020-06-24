@@ -100,5 +100,23 @@ public class ControllerEmp {
 		}
 		//return true;
 	}
+@Override
+	public void cambiarALogin(HomeAdmin home) {//OK!
+	}
 
+	@Override
+	public void cambiarACargaStock(HomeAdmin h) {//OK!
+	}
+
+	@Override
+	public void cambiarAConsultaStock(HomeAdmin h) {//OK!
+	}
+
+	@Override
+	public void cambiarAHomeAdmin(ConsultaStock cs) {//OK!
+	}
+
+	@Override
+	public void cambiarAHomeAdmin(CargaStock cs) {//OK!
+		}
 }
