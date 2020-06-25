@@ -5,12 +5,8 @@
  */
 package Controlador;
 
-import Model.Cargador;
-import Vistas.ConsultaStock;
-import Vistas.Home;
-import Vistas.HomeAdmin;
-import Vistas.HomeEmpleado;
-import Vistas.Login;
+import Vistas.*;
+import Model.*;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -18,7 +14,7 @@ import java.sql.SQLException;
  *
  * @author Esteban
  */
-public class ControllerEmp {
+public class ControllerEmp implements ControllerInterface{
     Cargador model;
     Home view;
 	
@@ -26,24 +22,24 @@ public class ControllerEmp {
 		this.model=model;
 		this.view=view;
 	}
-      //  @Override
+    @Override
 	public void iniciar() {//OK!
 	}
 
+    @Override
         public void cambiarALogin(Home v) {//OK!
 		v.setVisible(false);
 		Login l = new Login(this);
         l.setVisible(true);
         //setborn("a");
 	}
-      //  @Override
 	public void cambiarAHome2(Login l) {//OK!
 		l.setVisible(false);
 		HomeEmpleado gc =new HomeEmpleado(this,this.getModel());
 		gc.setVisible(true);	
 	}
 	
-	//@Override
+    @Override
 	public void cambiarAHome(HomeEmpleado gc) {//OK!
 		gc.setVisible(false);
 		Home h= new Home();
@@ -51,23 +47,23 @@ public class ControllerEmp {
 		//h.initComponents();
 		h.setVisible(true);
 	}
-	
-	//@Override
-	public void cambiarAHome2(CompraTickets_v1 ct) {
+    @Override
+	public void cambiarAHome2(CompraTickets ct) {
 		ct.setVisible(false);
 		HomeEmpleado gc =new HomeEmpleado(this,this.getModel());
 		gc.setVisible(true);
 	}
 
 	
+    @Override
 	public void cambiarAHome2(Home v) {//OK!
 	}
         
-	public void cambiarACompraTickets(CompraView c) {//OK!
+	public void cambiarACompraTickets(HomeCliente c) {//OK!
 		c.setVisible(false);
-		CompraTickets_v1 ct;
+		CompraTickets ct;
 		try {
-			ct = new CompraTickets_v1(this);
+			ct = new CompraTickets(this);
 		} catch (SQLException e) {
 			ct=null;
 			e.printStackTrace();
@@ -76,25 +72,27 @@ public class ControllerEmp {
 	}
 
 	
-	public void cambiarAPago(FormaPago fp) {//OK!
+	public void cambiarAPago(FormaDePago fp) {//OK!
 		fp.setVisible(false);
-		Pago p= new Pago(this);
 		p.setVisible(true);
 	}
 
 	
+    @Override
 	public void cambiarAFormaPago(Pago p) {//OK!
 		p.setVisible(false);
-		FormaPago fp=new FormaPago(this);
+		FormaDePago fp=new FormaDePago(this);
 		fp.setVisible(true);
 	}
 
 	
+    @Override
 	public Cargador getModel() {//OK!
 		return model;
 	}
 
 	
+    @Override
 	public boolean esValido(String a, String b) {
 		try{
 			return model.validarEmpleado(a,b);}
@@ -120,21 +118,21 @@ public class ControllerEmp {
 	}
 
 	
-	public void cambiarAHomeAdmin(CargaStock cs) {//OK!
+	public void cambiarAHomeAdmin(cargaStock cs) {//OK!
 		}
         
-	public void cambiarAFormaPago(CompraView c) {//OK!
+	public void cambiarAFormaPago(HomeCliente c) {//OK!
 		c.setVisible(false);
-		FormaPago fp= new FormaPago(this);
+		FormaDePago fp= new FormaDePago(this);
 		fp.setVisible(true);
 	}
 
 	
-	public void cambiarACompra(FormaPago fp) {//OK!
+	public void cambiarACompra(FormaDePago fp) {//OK!
 		fp.setVisible(false);
-		CompraView c;
+		HomeCliente c;
 		try {
-			c = new CompraView(this);
+			c = new HomeCliente(this);
 		} catch (SQLException e) {
 			e.printStackTrace();
 			c=null;
@@ -143,11 +141,11 @@ public class ControllerEmp {
 	}
 
 	
-	public void cambiarACompra(CompraTickets_v1 ct) {//OK!
+	public void cambiarACompra(CompraTickets ct) {//OK!
 		ct.setVisible(false);
-		CompraView c;
+		HomeCliente c;
 		try {
-			c = new CompraView(this);
+			c = new HomeCliente(this);
 		} catch (SQLException e) {
 			c=null;
 			e.printStackTrace();
@@ -155,11 +153,11 @@ public class ControllerEmp {
 		c.setVisible(true);
 	}
         
-	public void cambiarAPelicula(HomeEmpleado gc) {
+	public void cambiarATickets(HomeEmpleado gc) {
 		gc.setVisible(false);
-		CompraTickets_v1 ct;
+		CompraTickets ct;
 		try {
-			ct = new CompraTickets_v1(this);
+			ct = new CompraTickets(this);
 		} catch (SQLException e) {
 			ct=null;
 			e.printStackTrace();
@@ -168,7 +166,7 @@ public class ControllerEmp {
 	}
 
 	
-	public void cambiarAConfirma(FormaPago fp) {
+	public void cambiarAConfirma(FormaDePago fp) {
 		fp.setVisible(false);
 		Recibo r=new Recibo(this);
 		r.setVisible(true);
@@ -184,7 +182,7 @@ public class ControllerEmp {
 	
 	public void cambiarAFormaPago(Recibo r) {//OK!
 		r.setVisible(false);
-		FormaPago fp=new FormaPago(this);
+		FormaDePago fp=new FormaDePago(this);
 		fp.setVisible(true);
 	}
 
@@ -202,12 +200,12 @@ public class ControllerEmp {
 	
 	public void cambiarARecTick(HomeEmpleado gc) {
 		gc.setVisible(false);
-		RecibirTiket rt= new RecibirTiket(this);
+		ProcesarComprobante rt= new ProcesarComprobante(this);
 		rt.setVisible(true);
 	}
 
 	
-	public void cambiarAHomeEmpleado(RecibirTiket rt) {
+	public void cambiarAHomeEmpleado(ProcesarComprobante rt) {
 		rt.setVisible(false);
 		HomeEmpleado gc= new HomeEmpleado(this,this.getModel());
 		gc.setVisible(true);
@@ -268,9 +266,9 @@ public class ControllerEmp {
 		}
 	}
 
-	
+	/*
 	public void iniciarCompra(int idPelicula,String fila, int columna) {
-		String codigoCompra= model.getObjCompra().getCodigo();
+		//String codigoCompra= model.getObjCompra().getCodigo();
 		try {
 			model.comprarEntrada(idPelicula, codigoCompra,fila,columna);
 			
@@ -278,12 +276,7 @@ public class ControllerEmp {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-	}
-
-	
-	public Compra getCompraActual() {
-		return model.getObjCompraEmpleado();
-	}
+	}*/
 
 	
 	public boolean cantStock(int id, int cantidad) {

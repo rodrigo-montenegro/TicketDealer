@@ -5,17 +5,25 @@
  */
 package Vistas;
 
+import Controlador.*;
+
 /**
  *
  * @author santi
  */
 public class Recibo extends javax.swing.JFrame {
 
+    private final ControllerInterface controller;
+
     /**
      * Creates new form Recibo
      */
-    public Recibo() {
-        initComponents();
+    public Recibo(ControllerInterface controller) {
+        this.controller=controller;
+    	initComponents();
+        this.setLocationRelativeTo(null);
+        this.setDefaultCloseOperation(this.EXIT_ON_CLOSE);
+        this.setResizable(false);
     }
 
     /**

@@ -7,14 +7,14 @@
 package Vistas;
 
 
-import Controlador.ControllerInterface;
-import main.java.Controlador.*;
-import main.java.Controlador.ControllerInterface;
+import Controlador.*;
 /**
  *
  * @author santi
  */
 public class ProcesarComprobante extends javax.swing.JFrame {
+
+    private final ControllerInterface controller;
 
     /**
      * Creates new form ProcesarComprobante1

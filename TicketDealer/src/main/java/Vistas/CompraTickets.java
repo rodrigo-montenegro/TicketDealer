@@ -5,19 +5,26 @@
  */
 package Vistas;
 
+import Controlador.ControllerInterface;
+
 /**
  *
  * @author santi
  */
 public class CompraTickets extends javax.swing.JFrame {
 
+    private final ControllerInterface controller;
+
     /**
      * Creates new form CompraTicket
      */
-    public CompraTickets() {
-        initComponents();
+    public CompraTickets(ControllerInterface controller) {
+        this.controller=controller;
+    	initComponents();
+        this.setLocationRelativeTo(null);
+        this.setDefaultCloseOperation(this.EXIT_ON_CLOSE);
+        this.setResizable(false);   
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

@@ -4,29 +4,14 @@
  * and open the template in the editor.
  */
 //package Controlador;
-package main.java.controller;
+package Controlador;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import javax.swing.JOptionPane;
-
-import main.java.model.Cargador;
-import main.java.resources.Compra;
-import main.java.view.CargaStock;
-import main.java.view.CompraView;
-import main.java.view.CompraTickets_v1;
-import main.java.view.ConsultaStock;
-import main.java.view.HomeEmpleado;
-import main.java.view.Home;
-import main.java.view.HomeAdmin;
-import main.java.view.HomeCliente;
-import main.java.view.Login;
-import main.java.view.Pago;
-import main.java.view.RecibirTiket;
-import main.java.view.FormaPago;
-import main.java.view.Recibo;
-import main.java.view.*;
+import Model.*;
+import Vistas.*;
 
 /**
  *
@@ -66,7 +51,7 @@ public class ControllerAdmin implements ControllerInterface {
   }
 
   
-  public void cambiarAPago(FormaPago fp) {// OK!
+  public void cambiarAPago(FormaDePago fp) {// OK!
   }
 
   
@@ -105,7 +90,7 @@ public class ControllerAdmin implements ControllerInterface {
   
   public void cambiarACargaStock(HomeAdmin h) {// OK!
     h.setVisible(false);
-    CargaStock cs = new CargaStock(this, getModel());
+    cargaStock cs = new cargaStock(this, getModel());
     ConsultaStock cos = new ConsultaStock(this, getModel());
     cs.setVisible(true);
     cos.setVisible(true);
@@ -124,7 +109,7 @@ public class ControllerAdmin implements ControllerInterface {
     h.setVisible(true);
   }
 
-  public void cambiarAHomeAdmin(CargaStock cs) {// OK!
+  public void cambiarAHomeAdmin(cargaStock cs) {// OK!
     cs.setVisible(false);
     HomeAdmin h = new HomeAdmin(this);
     h.setVisible(true);
@@ -136,22 +121,22 @@ public class ControllerAdmin implements ControllerInterface {
   public void cambiarAHome(HomeEmpleado gc) {// OK!
   }
 
-  public void cambiarAFormaPago(CompraView c) {// OK!
+  public void cambiarAFormaPago(HomeCliente c) {// OK!
   }
 
-  public void cambiarACompraTickets(CompraView c) {// OK!
+  public void cambiarACompraTickets(HomeCliente c) {// OK!
   }
 
-  public void cambiarACompra(FormaPago fp) {// OK!
+  public void cambiarACompra(FormaDePago fp) {// OK!
   }
 
-  public void cambiarAHome2(CompraTickets_v1 compraTickets_v1) {// OK!
+  public void cambiarAHome2(CompraTickets compraTickets_v1) {// OK!
   }
 
-  public void cambiarACompra(CompraTickets_v1 ct) {// OK!
+  public void cambiarACompra(CompraTickets ct) {// OK!
   }
 
-  public void cambiarAConfirma(FormaPago fp) {// OK!
+  public void cambiarAConfirma(FormaDePago fp) {// OK!
   }
 
   public void cambiarAConfirma(Pago p) {// OK!
@@ -163,14 +148,10 @@ public class ControllerAdmin implements ControllerInterface {
   public void cambiarAHome2(Recibo r) {// OK!
   }
 
-  public void cambiarAPelicula(HomeCliente hc) {// OK!
-  }
-
   public void cambiarARecTick(HomeEmpleado gc) {// OK!
   }
 
-  public void cambiarAHomeEmpleado(RecibirTiket rt) {
-  }
+ 
 
   public ResultSet getRSProd(String s) {
     try {
