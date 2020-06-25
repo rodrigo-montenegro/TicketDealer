@@ -11,6 +11,7 @@ import Vistas.Home;
 import Vistas.HomeAdmin;
 import Vistas.HomeEmpleado;
 import Vistas.Login;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
@@ -153,5 +154,72 @@ public class ControllerEmp {
 		}
 		c.setVisible(true);
 	}
-        
+        @Override
+	public void cambiarAPelicula(HomeEmpleado gc) {
+		gc.setVisible(false);
+		CompraTickets_v1 ct;
+		try {
+			ct = new CompraTickets_v1(this);
+		} catch (SQLException e) {
+			ct=null;
+			e.printStackTrace();
+		}
+		ct.setVisible(true);
+	}
+
+	@Override
+	public void cambiarAConfirma(FormaPago fp) {
+		fp.setVisible(false);
+		Recibo r=new Recibo(this);
+		r.setVisible(true);
+	}
+
+	@Override
+	public void cambiarAConfirma(Pago p) {//OK!
+		p.setVisible(false);
+		Recibo r=new Recibo(this);
+		r.setVisible(true);
+	}
+
+	@Override
+	public void cambiarAFormaPago(Recibo r) {//OK!
+		r.setVisible(false);
+		FormaPago fp=new FormaPago(this);
+		fp.setVisible(true);
+	}
+
+	@Override
+	public void cambiarAHome2(Recibo r) {//OK!
+		r.setVisible(false);
+		HomeEmpleado gc= new HomeEmpleado(this,this.getModel());
+		gc.setVisible(true);
+	}
+	
+	@Override
+	public void cambiarAPelicula(HomeCliente hc) {//OK!
+	}
+
+	@Override
+	public void cambiarARecTick(HomeEmpleado gc) {
+		gc.setVisible(false);
+		RecibirTiket rt= new RecibirTiket(this);
+		rt.setVisible(true);
+	}
+
+	@Override
+	public void cambiarAHomeEmpleado(RecibirTiket rt) {
+		rt.setVisible(false);
+		HomeEmpleado gc= new HomeEmpleado(this,this.getModel());
+		gc.setVisible(true);
+	}
+
+	@Override
+	public ResultSet getRSProd(String s) {
+		return null;
+	}
+	
+	@Override
+	public boolean agregarStock(int nombre, int cant) {
+		return false;
+	}
 }
