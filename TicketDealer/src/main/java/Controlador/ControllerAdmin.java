@@ -198,13 +198,13 @@ public class ControllerAdmin implements ControllerInterface {
   }
 
   @Override
-	public boolean addProducto(String nombre, double precio, String string, String string2) {
-		try {
-			model.creaProducto(nombre, precio, string, string2);
-			return true;
-		} catch (SQLException e) {
-			e.printStackTrace();
-			return false;
-		}
-		
-	}
+  public boolean addProducto(String nombre, double precio, String string, String string2) {
+    try {
+      model.creaProducto(nombre, precio, string, string2);
+      return true;
+    } catch (SQLException e) {
+      e.printStackTrace();
+      return false;
+    }
+  }
+}
