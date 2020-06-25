@@ -5,6 +5,8 @@ import Vistas.*;
 import Resources.*;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class ControllerEmp implements ControllerInterface{
 	Cargador model;
@@ -67,8 +69,12 @@ public class ControllerEmp implements ControllerInterface{
 	public void cambiarACompraTickets(CompraView c) {//OK!
 		c.setVisible(false);
 		CompraTickets_v1 ct;
+            try {
                 ct = new CompraTickets_v1(this);
-		ct.setVisible(true);
+                ct.setVisible(true);
+            } catch (SQLException ex) {
+                Logger.getLogger(ControllerEmp.class.getName()).log(Level.SEVERE, null, ex);
+            }
 	}
 
 	@Override
@@ -157,8 +163,13 @@ public class ControllerEmp implements ControllerInterface{
 	public void cambiarAEntradas(HomeEmpleado gc) {
 		gc.setVisible(false);
 		CompraTickets_v1 ct;
+            try {
                 ct = new CompraTickets_v1(this);
-		ct.setVisible(true);
+                ct.setVisible(true);
+            } catch (SQLException ex) {
+                Logger.getLogger(ControllerEmp.class.getName()).log(Level.SEVERE, null, ex);
+            }
+		
 	}
 
 	@Override

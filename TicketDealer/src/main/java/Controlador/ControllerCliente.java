@@ -4,6 +4,8 @@ import Vistas.*;
 import Resources.*;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 //import java.sql.SQLException;
 //import java.util.logging.Level;
@@ -87,8 +89,13 @@ public class ControllerCliente implements ControllerInterface{
 	public void cambiarACompraTickets(CompraView c) {//OK!
 		c.setVisible(false);
 		CompraTickets_v1 ct;
+            try {
                 ct = new CompraTickets_v1(this);
-		ct.setVisible(true);
+                ct.setVisible(true);
+            } catch (SQLException ex) {
+                Logger.getLogger(ControllerCliente.class.getName()).log(Level.SEVERE, null, ex);
+            }
+		
 	}
 	
 	@Override
@@ -177,8 +184,12 @@ public class ControllerCliente implements ControllerInterface{
 	public void cambiarAEntradas(HomeCliente hc) {
 		hc.setVisible(false);
 		CompraTickets_v1 ct;
+            try {
                 ct = new CompraTickets_v1(this);
-		ct.setVisible(true);
+                ct.setVisible(true);
+            } catch (SQLException ex) {
+                Logger.getLogger(ControllerCliente.class.getName()).log(Level.SEVERE, null, ex);
+            }
 	}	
 	
 	@Override
