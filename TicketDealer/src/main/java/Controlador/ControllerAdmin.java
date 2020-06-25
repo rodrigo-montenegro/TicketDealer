@@ -162,5 +162,26 @@ public class ControllerAdmin implements ControllerInterface {
   }
 
   @Override
-	public void cambiarAHomeEmpleado(RecibirTiket rt) {
+  public void cambiarAHomeEmpleado(RecibirTiket rt) {
+  }
+
+  @Override
+  public ResultSet getRSProd(String s) {
+    try {
+      return model.CargarStock();
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
+    return null;
+  }
+
+  @Override
+	public boolean agregarStock(int IDprodNom,int cant){
+		try {
+			model.agregarStock(IDprodNom,cant);
+			return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+			}
 	}
