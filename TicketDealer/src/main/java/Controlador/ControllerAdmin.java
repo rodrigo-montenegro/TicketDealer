@@ -56,8 +56,34 @@ public class ControllerAdmin implements ControllerInterface {
   }
 
   @Override
-	public void cambiarAHome2(Login l) {//OK!
-		l.setVisible(false);
-		HomeAdmin cs =new HomeAdmin(this);
-		cs.setVisible(true);
+  public void cambiarAHome2(Login l) {// OK!
+    l.setVisible(false);
+    HomeAdmin cs = new HomeAdmin(this);
+    cs.setVisible(true);
+  }
+
+  @Override
+  public boolean esValido(String a, String b) {
+    try {
+      return model.validarAdmin(a, b);
+    } catch (SQLException e) {
+      return false;
+    }
+    // return true;
+  }
+
+  @Override
+  public void cambiarALogin(HomeAdmin h) {// OK!
+    h.setVisible(false);
+    Login l = new Login(this);
+    l.setVisible(true);
+  }
+
+  @Override
+	public void cambiarACargaStock(HomeAdmin h) {//OK!
+		h.setVisible(false);
+    	CargaStock cs = new CargaStock(this,getModel());
+    	ConsultaStock cos= new ConsultaStock(this,getModel());
+    	cs.setVisible(true);
+    	cos.setVisible(true);
 	}
