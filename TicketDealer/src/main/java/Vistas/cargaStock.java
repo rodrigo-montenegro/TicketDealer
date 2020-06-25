@@ -447,6 +447,7 @@ public class CargaStock extends javax.swing.JFrame implements ViewObserver{
 		} 
     }
 
+	@Override
 	public void update() {
 		this.setBoxs();
 	}
