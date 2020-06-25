@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package Vistas;
-import java.awt.event.ActionEvent;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -12,11 +12,8 @@ import java.util.logging.Logger;
 
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import Controlador.*;
 
-import main.java.controlador.ControllerInterface;
-import main.java.model.Cargador;
-import main.java.model.ModelSubject;
-import main.java.resources.Generador;
 /**
  *
  * @author santi

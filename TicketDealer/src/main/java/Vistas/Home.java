@@ -14,11 +14,12 @@ import Controlador.*;
 public class Home extends javax.swing.JFrame {
     public ControllerInterface controller;
     
-    public Home() {
-    	controller=null;
-        initComponents();
+    public Home(ControllerInterface controller) {
+        this.controller=controller;
+    	initComponents();
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(this.EXIT_ON_CLOSE);
+        this.setResizable(false);   
     }
 
     /**

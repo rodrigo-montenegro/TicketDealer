@@ -5,10 +5,8 @@
  */
 package Vistas;
 
-import Controlador.ControllerEmp;
-import main.java.controlador.*;
-import main.java.controlador.ControllerInterface;
-import main.java.model.Cargador;
+import Controlador.*;
+
 
 import java.sql.SQLException;
 import java.util.logging.Level;

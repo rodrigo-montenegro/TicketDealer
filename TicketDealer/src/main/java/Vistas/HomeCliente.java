@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package Vistas;
-
+import Controlador.*;
 /**
  *
  * @author santi
@@ -14,8 +14,12 @@ public class HomeCliente extends javax.swing.JFrame {
     /**
      * Creates new form HomeCliente
      */
-    public HomeCliente() {
-        initComponents();
+    public HomeCliente(ControllerInterface controller) {
+        this.controller=controller;
+    	initComponents();
+        this.setLocationRelativeTo(null);
+        this.setDefaultCloseOperation(this.EXIT_ON_CLOSE);
+        this.setResizable(false);   
     }
 
     /**

@@ -9,6 +9,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import main.java.controlador.*;
 import main.java.controlador.ControllerInterface;
+import Controlador.*;
 /**
  *
  * @author santi
@@ -17,10 +18,11 @@ public class HomeAdmin extends javax.swing.JFrame {
 ControllerInterface controller;
 	
     public HomeAdmin(ControllerInterface controller) {
-    	this.controller=controller;
-        initComponents();
+        this.controller=controller;
+    	initComponents();
         this.setLocationRelativeTo(null);
-        this.setResizable(false);
+        this.setDefaultCloseOperation(this.EXIT_ON_CLOSE);
+        this.setResizable(false);   
     }
     /**
      * This method is called from within the constructor to initialize the form.
