@@ -62,18 +62,14 @@ public class ControllerEmp implements ControllerInterface{
 	public void cambiarACompraTickets(HomeCliente c) {//OK!
 		c.setVisible(false);
 		CompraTickets ct;
-		try {
-			ct = new CompraTickets(this);
-		} catch (SQLException e) {
-			ct=null;
-			e.printStackTrace();
-		}
+                ct = new CompraTickets(this);
 		ct.setVisible(true);
 	}
 
 	
 	public void cambiarAPago(FormaDePago fp) {//OK!
 		fp.setVisible(false);
+                Pago p= new Pago(this);
 		p.setVisible(true);
 	}
 
@@ -118,9 +114,11 @@ public class ControllerEmp implements ControllerInterface{
 	}
 
 	
+    @Override
 	public void cambiarAHomeAdmin(cargaStock cs) {//OK!
 		}
         
+    @Override
 	public void cambiarAFormaPago(HomeCliente c) {//OK!
 		c.setVisible(false);
 		FormaDePago fp= new FormaDePago(this);
@@ -128,15 +126,11 @@ public class ControllerEmp implements ControllerInterface{
 	}
 
 	
+    @Override
 	public void cambiarACompra(FormaDePago fp) {//OK!
 		fp.setVisible(false);
 		HomeCliente c;
-		try {
-			c = new HomeCliente(this);
-		} catch (SQLException e) {
-			e.printStackTrace();
-			c=null;
-		}
+                c = new HomeCliente(this);
 		c.setVisible(true);
 	}
 
@@ -144,24 +138,14 @@ public class ControllerEmp implements ControllerInterface{
 	public void cambiarACompra(CompraTickets ct) {//OK!
 		ct.setVisible(false);
 		HomeCliente c;
-		try {
-			c = new HomeCliente(this);
-		} catch (SQLException e) {
-			c=null;
-			e.printStackTrace();
-		}
+                c = new HomeCliente(this);
 		c.setVisible(true);
 	}
         
 	public void cambiarATickets(HomeEmpleado gc) {
 		gc.setVisible(false);
 		CompraTickets ct;
-		try {
-			ct = new CompraTickets(this);
-		} catch (SQLException e) {
-			ct=null;
-			e.printStackTrace();
-		}
+                ct = new CompraTickets(this);
 		ct.setVisible(true);
 	}
 
@@ -266,17 +250,17 @@ public class ControllerEmp implements ControllerInterface{
 		}
 	}
 
-	/*
+	
 	public void iniciarCompra(int idPelicula,String fila, int columna) {
 		//String codigoCompra= model.getObjCompra().getCodigo();
 		try {
-			model.comprarEntrada(idPelicula, codigoCompra,fila,columna);
+			model.comprarEntrada(idEvento, codigoCompra,fila,columna);
 			
-			model.setOcupado(idPelicula, model.getIdAsiento(fila, columna));
+			model.setOcupado(idEvento, model.getIdAsiento(fila, columna));
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-	}*/
+	}
 
 	
 	public boolean cantStock(int id, int cantidad) {
@@ -300,6 +284,11 @@ public class ControllerEmp implements ControllerInterface{
 
     @Override
     public void cambiarACompraTickets(CompraTickets c) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public ResultSet setEventosBox() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 	

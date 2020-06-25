@@ -7,6 +7,7 @@ package Init;
 import  Vistas.*;
 import  Controlador.*;
 import  Model.*;
+import java.sql.SQLException;
 /**
  *
  * @author macbook
@@ -19,7 +20,7 @@ public class Main {
         System.out.println("Commit Santi");
         Iniciar();
     }
-    public static void Iniciar(){
+    public static void Iniciar() throws SQLException{
         Home h= new Home();
 	Cargador c=new Cargador();
 	c.cargarAdmin(a.getUsuario(),a.getPass());

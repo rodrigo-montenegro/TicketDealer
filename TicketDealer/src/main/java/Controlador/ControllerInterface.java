@@ -68,23 +68,12 @@ public interface ControllerInterface {
 	
 	void iniciarCompra(int idPelicula, String fila, int columna);
 
-	Compra getCompraActual();
+	//Compra getCompraActual();
 	
 	boolean cantStock(int id, int cantidad);
 	
 	int getIdProd(String nombre);
 
-	boolean agregarStock(int nombre, int cant);
-
-	boolean quitarStock(int nombre, int cant);
-
-	boolean addProducto(String nombre, double precio, String string, String string2);
-
-	boolean clearProducto(int text);
-
-	ResultSet setEventosBox();	
-
-	Compra getCompraActual();
-	
+	ResultSet setEventosBox();		
 	
 }
