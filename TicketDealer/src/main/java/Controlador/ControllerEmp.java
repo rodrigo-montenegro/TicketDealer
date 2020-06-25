@@ -59,10 +59,10 @@ public class ControllerEmp {
 		gc.setVisible(true);
 	}
 
-	@Override
+	
 	public void cambiarAHome2(Home v) {//OK!
 	}
-        @Override
+        
 	public void cambiarACompraTickets(CompraView c) {//OK!
 		c.setVisible(false);
 		CompraTickets_v1 ct;
@@ -75,26 +75,26 @@ public class ControllerEmp {
 		ct.setVisible(true);
 	}
 
-	@Override
+	
 	public void cambiarAPago(FormaPago fp) {//OK!
 		fp.setVisible(false);
 		Pago p= new Pago(this);
 		p.setVisible(true);
 	}
 
-	@Override
+	
 	public void cambiarAFormaPago(Pago p) {//OK!
 		p.setVisible(false);
 		FormaPago fp=new FormaPago(this);
 		fp.setVisible(true);
 	}
 
-	@Override
+	
 	public Cargador getModel() {//OK!
 		return model;
 	}
 
-	@Override
+	
 	public boolean esValido(String a, String b) {
 		try{
 			return model.validarEmpleado(a,b);}
@@ -103,33 +103,33 @@ public class ControllerEmp {
 		}
 		//return true;
 	}
-@Override
+
 	public void cambiarALogin(HomeAdmin home) {//OK!
 	}
 
-	@Override
+	
 	public void cambiarACargaStock(HomeAdmin h) {//OK!
 	}
 
-	@Override
+	
 	public void cambiarAConsultaStock(HomeAdmin h) {//OK!
 	}
 
-	@Override
+	
 	public void cambiarAHomeAdmin(ConsultaStock cs) {//OK!
 	}
 
-	@Override
+	
 	public void cambiarAHomeAdmin(CargaStock cs) {//OK!
 		}
-        @Override
+        
 	public void cambiarAFormaPago(CompraView c) {//OK!
 		c.setVisible(false);
 		FormaPago fp= new FormaPago(this);
 		fp.setVisible(true);
 	}
 
-	@Override
+	
 	public void cambiarACompra(FormaPago fp) {//OK!
 		fp.setVisible(false);
 		CompraView c;
@@ -142,7 +142,7 @@ public class ControllerEmp {
 		c.setVisible(true);
 	}
 
-	@Override
+	
 	public void cambiarACompra(CompraTickets_v1 ct) {//OK!
 		ct.setVisible(false);
 		CompraView c;
@@ -154,7 +154,7 @@ public class ControllerEmp {
 		}
 		c.setVisible(true);
 	}
-        @Override
+        
 	public void cambiarAPelicula(HomeEmpleado gc) {
 		gc.setVisible(false);
 		CompraTickets_v1 ct;
@@ -167,78 +167,78 @@ public class ControllerEmp {
 		ct.setVisible(true);
 	}
 
-	@Override
+	
 	public void cambiarAConfirma(FormaPago fp) {
 		fp.setVisible(false);
 		Recibo r=new Recibo(this);
 		r.setVisible(true);
 	}
 
-	@Override
+	
 	public void cambiarAConfirma(Pago p) {//OK!
 		p.setVisible(false);
 		Recibo r=new Recibo(this);
 		r.setVisible(true);
 	}
 
-	@Override
+	
 	public void cambiarAFormaPago(Recibo r) {//OK!
 		r.setVisible(false);
 		FormaPago fp=new FormaPago(this);
 		fp.setVisible(true);
 	}
 
-	@Override
+	
 	public void cambiarAHome2(Recibo r) {//OK!
 		r.setVisible(false);
 		HomeEmpleado gc= new HomeEmpleado(this,this.getModel());
 		gc.setVisible(true);
 	}
 	
-	@Override
+	
 	public void cambiarAPelicula(HomeCliente hc) {//OK!
 	}
 
-	@Override
+	
 	public void cambiarARecTick(HomeEmpleado gc) {
 		gc.setVisible(false);
 		RecibirTiket rt= new RecibirTiket(this);
 		rt.setVisible(true);
 	}
 
-	@Override
+	
 	public void cambiarAHomeEmpleado(RecibirTiket rt) {
 		rt.setVisible(false);
 		HomeEmpleado gc= new HomeEmpleado(this,this.getModel());
 		gc.setVisible(true);
 	}
 
-	@Override
+	
 	public ResultSet getRSProd(String s) {
 		return null;
 	}
 	
-	@Override
+	
 	public boolean agregarStock(int nombre, int cant) {
 		return false;
 	}
         
-	@Override
+	
 	public boolean quitarStock(int nombre, int cant) {
 		return false;
 	}
 
-	@Override
+	
 	public boolean addProducto(String nombre, double precio, String string, String string2) {
 		return false;
 	}
 	
-	@Override
+	
 	public boolean clearProducto(int text) {
 		return false;
 	}
 
-	@Override
+	
 	public ResultSet getRSStock() {
 		try {
 			return model.getCargaBox().CargarStock();
@@ -248,7 +248,7 @@ public class ControllerEmp {
 		}
 	}
 	
-	@Override
+	
 	public ResultSet setPelisBox() {
 		try {
 			return model.getPeliculas();
@@ -258,7 +258,7 @@ public class ControllerEmp {
 		}
 	}
 
-	@Override
+	
 	public boolean esDisponible(int idPelicula, int idAsiento) {
 		try {
 			return model.estaOcupado(idPelicula,idAsiento);
@@ -268,7 +268,7 @@ public class ControllerEmp {
 		}
 	}
 
-	@Override
+	
 	public void iniciarCompra(int idPelicula,String fila, int columna) {
 		String codigoCompra= model.getObjCompra().getCodigo();
 		try {
@@ -280,17 +280,17 @@ public class ControllerEmp {
 		}
 	}
 
-	@Override
+	
 	public Compra getCompraActual() {
 		return model.getObjCompraEmpleado();
 	}
 
-	@Override
+	
 	public boolean cantStock(int id, int cantidad) {
 		return false;
 	}
 
-	@Override
+	
 	public int getIdProd(String nombre) {
 		return 0;
 	}
