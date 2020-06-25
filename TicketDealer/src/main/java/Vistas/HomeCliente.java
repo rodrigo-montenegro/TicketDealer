@@ -50,6 +50,11 @@ public class HomeCliente extends javax.swing.JFrame
 
         CompraTickets.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 18)); // NOI18N
         CompraTickets.setText("COMPRAR TICKETS");
+        CompraTickets.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CompraTicketsActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 24)); // NOI18N
         jLabel1.setText("¡BIENVENIDO!");
@@ -88,6 +93,10 @@ public class HomeCliente extends javax.swing.JFrame
         // TODO add your handling code here:
     }//GEN-LAST:event_CompraExtrasActionPerformed
 
+    private void CompraTicketsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CompraTicketsActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CompraTicketsActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -116,8 +125,10 @@ public class HomeCliente extends javax.swing.JFrame
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
+        java.awt.EventQueue.invokeLater(new Runnable() 
+        {
+            public void run() 
+            {
                 new HomeCliente().setVisible(true);
             }
         });
