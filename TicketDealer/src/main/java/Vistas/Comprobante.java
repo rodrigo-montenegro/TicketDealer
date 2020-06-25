@@ -4,18 +4,29 @@
  * and open the template in the editor.
  */
 package Vistas;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
+import javax.swing.JOptionPane;
+
+import main.java.controller.*;
+import main.java.controller.ControllerInterface;
 /**
  *
  * @author santi
  */
 public class Comprobante extends javax.swing.JFrame {
-
+ControllerInterface controller;
     /**
      * Creates new form Comprobante1
      */
-    public Comprobante() {
+    public Comprobante(ControllerInterface controller) {
+		this.controller=controller;
         initComponents();
+        this.setLocationRelativeTo(null);
+        this.setDefaultCloseOperation(this.EXIT_ON_CLOSE);
+        this.setResizable(false);
+        setText();
     }
 
     /**
@@ -246,44 +257,31 @@ public class Comprobante extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel8ActionPerformed
 
     private void generarComprobanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generarComprobanteActionPerformed
-        // TODO add your handling code here:
+       controller.getCompraActual().resetCompra();
+    	JOptionPane.showMessageDialog(null, "Compra realizada con exito");
+        controller.cambiarAHome2(this);
     }//GEN-LAST:event_generarComprobanteActionPerformed
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Comprobante.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Comprobante.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Comprobante.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Comprobante.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Comprobante().setVisible(true);
-            }
-        });
+    public void setText(){
+    	try {
+			ResultSet compraFinalizada = controller.getModel().getCompraFinalizada(controller.getCompraActual().getCodigo());
+			while(compraFinalizada.next()){
+				cobradoPor.setText("-");
+				Total.setText(compraFinalizada.getString(3));
+				metodoPago.setText(compraFinalizada.getString(6));
+				numeroCompra.setText(compraFinalizada.getString(1));
+				Fecha.setText(compraFinalizada.getString(4));
+				Descripcion.setText(compraFinalizada.getString(2));
+				Pagado.setText("-");				
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
     }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField Descripcion;
