@@ -1,14 +1,18 @@
-
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package Controlador;
 import Model.*;
 import Vistas.*;
-import Resources.*;
 import java.sql.ResultSet;
-
-
+/**
+ *
+ * @author Esteban
+ */
 public interface ControllerInterface {
-	
-	void iniciar();
+    void iniciar();
 
 	void cambiarALogin(Home home);
 	
@@ -22,13 +26,13 @@ public interface ControllerInterface {
 	
 	void cambiarAHome(HomeEmpleado gc);
 	
-	void cambiarACompraTickets(CompraView c);
+	void cambiarACompraTickets(CompraTickets c);
 	
-	void cambiarACompra(FormaPago fp);
+	void cambiarACompra(FormaDePago fp);
 	
 	void cambiarAFormaPago(Pago p);
 	
-	void cambiarAFormaPago(CompraView c);
+	void cambiarAFormaPago(HomeCliente c);
 	
 	void cambiarACargaStock(HomeAdmin h);
 	
@@ -36,35 +40,21 @@ public interface ControllerInterface {
 	
 	void cambiarAHomeAdmin(ConsultaStock cs);
 	
-	void cambiarAHomeAdmin(CargaStock cs);
+	void cambiarAHomeAdmin(cargaStock cs);
 	
 	void cambiarAHome2(Login l);
+        
+        void cambiarAHomeEmpleado(ProcesarComprobante rt);
 	
-	void cambiarAPago(FormaPago fp);
+	void cambiarAPago(FormaDePago fp);
 	
 	public Cargador getModel();
 	
 	boolean esValido(String a,String b);
 
-	void cambiarAHome2(CompraTickets_v1 ct);
-
-	void cambiarACompra(CompraTickets_v1 ct);
-
-	void cambiarAConfirma(FormaPago fp);
-
-	void cambiarAConfirma(Pago p);
-
-	void cambiarAFormaPago(Recibo r);
-
-	void cambiarAHome2(Recibo r);
-
-	void cambiarAPelicula(HomeCliente hc);
-	
-	void cambiarARecTick(HomeEmpleado gc);
-	
-	void cambiarAHomeEmpleado(RecibirTiket rt);
-	
-	ResultSet getRSProd(String s);
+        ResultSet getRSProd(String s);
+        
+        void cambiarARecTick(HomeEmpleado gc);
 
 	boolean agregarStock(int nombre, int cant);
 
@@ -82,9 +72,12 @@ public interface ControllerInterface {
 	
 	void iniciarCompra(int idPelicula, String fila, int columna);
 
-	Compra getCompraActual();
+	//Compra getCompraActual();
 	
 	boolean cantStock(int id, int cantidad);
 	
 	int getIdProd(String nombre);
+
+	ResultSet setEventosBox();		
+	
 }

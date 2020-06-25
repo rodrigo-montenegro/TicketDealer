@@ -1,49 +1,46 @@
-
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package Controlador;
-import Model.*;
+
 import Vistas.*;
-import Resources.*;
+import Model.*;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+/**
+ *
+ * @author Esteban
+ */
 public class ControllerEmp implements ControllerInterface{
-	Cargador model;
+    Cargador model;
     Home view;
 	
 	public ControllerEmp(Cargador model, Home view){
 		this.model=model;
 		this.view=view;
 	}
-
-	@Override
+    @Override
 	public void iniciar() {//OK!
 	}
 
-	@Override
-	public void cambiarALogin(Home v) {//OK!
+    @Override
+        public void cambiarALogin(Home v) {//OK!
 		v.setVisible(false);
 		Login l = new Login(this);
         l.setVisible(true);
         //setborn("a");
 	}
-	
-	@Override
-	public void cambiarAHome(Login l) {//OK!
-		l.setVisible(false);
-		Home h= new Home();
-		h.cambiarController(this);
-		//h.initComponents();
-		h.setVisible(true);
-	}
-
-	@Override
+    @Override
 	public void cambiarAHome2(Login l) {//OK!
 		l.setVisible(false);
 		HomeEmpleado gc =new HomeEmpleado(this,this.getModel());
 		gc.setVisible(true);	
 	}
 	
-	@Override
+    @Override
 	public void cambiarAHome(HomeEmpleado gc) {//OK!
 		gc.setVisible(false);
 		Home h= new Home();
@@ -51,46 +48,48 @@ public class ControllerEmp implements ControllerInterface{
 		//h.initComponents();
 		h.setVisible(true);
 	}
-	
-	@Override
-	public void cambiarAHome2(CompraTickets_v1 ct) {
+	public void cambiarAHome2(CompraTickets ct) {
 		ct.setVisible(false);
 		HomeEmpleado gc =new HomeEmpleado(this,this.getModel());
 		gc.setVisible(true);
 	}
 
-	@Override
+	
+    @Override
 	public void cambiarAHome2(Home v) {//OK!
 	}
-
-	@Override
-	public void cambiarACompraTickets(CompraView c) {//OK!
+        
+	public void cambiarACompraTickets(HomeCliente c) {//OK!
 		c.setVisible(false);
-		CompraTickets_v1 ct;
-                ct = new CompraTickets_v1(this);
+		CompraTickets ct;
+                ct = new CompraTickets(this);
 		ct.setVisible(true);
 	}
 
-	@Override
-	public void cambiarAPago(FormaPago fp) {//OK!
+	
+    @Override
+	public void cambiarAPago(FormaDePago fp) {//OK!
 		fp.setVisible(false);
-		Pago p= new Pago(this);
+                Pago p= new Pago(this);
 		p.setVisible(true);
 	}
 
-	@Override
+	
+    @Override
 	public void cambiarAFormaPago(Pago p) {//OK!
 		p.setVisible(false);
-		FormaPago fp=new FormaPago(this);
+		FormaDePago fp=new FormaDePago(this);
 		fp.setVisible(true);
 	}
 
-	@Override
+	
+    @Override
 	public Cargador getModel() {//OK!
 		return model;
 	}
 
-	@Override
+	
+    @Override
 	public boolean esValido(String a, String b) {
 		try{
 			return model.validarEmpleado(a,b);}
@@ -100,139 +99,140 @@ public class ControllerEmp implements ControllerInterface{
 		//return true;
 	}
 
-	@Override
+    @Override
 	public void cambiarALogin(HomeAdmin home) {//OK!
 	}
 
-	@Override
+	
+    @Override
 	public void cambiarACargaStock(HomeAdmin h) {//OK!
 	}
 
-	@Override
+	
+    @Override
 	public void cambiarAConsultaStock(HomeAdmin h) {//OK!
 	}
 
-	@Override
+	
+    @Override
 	public void cambiarAHomeAdmin(ConsultaStock cs) {//OK!
 	}
 
-	@Override
-	public void cambiarAHomeAdmin(CargaStock cs) {//OK!
+	
+    @Override
+	public void cambiarAHomeAdmin(cargaStock cs) {//OK!
 		}
-
-	@Override
-	public void cambiarAFormaPago(CompraView c) {//OK!
+        
+    @Override
+	public void cambiarAFormaPago(HomeCliente c) {//OK!
 		c.setVisible(false);
-		FormaPago fp= new FormaPago(this);
+		FormaDePago fp= new FormaDePago(this);
 		fp.setVisible(true);
 	}
 
-	@Override
-	public void cambiarACompra(FormaPago fp) {//OK!
+	
+    @Override
+	public void cambiarACompra(FormaDePago fp) {//OK!
 		fp.setVisible(false);
-		CompraView c;
-		try {
-			c = new CompraView(this);
-		} catch (SQLException e) {
-			e.printStackTrace();
-			c=null;
-		}
+		HomeCliente c;
+                c = new HomeCliente(this);
 		c.setVisible(true);
 	}
 
-	@Override
-	public void cambiarACompra(CompraTickets_v1 ct) {//OK!
+	
+	public void cambiarACompra(CompraTickets ct) {//OK!
 		ct.setVisible(false);
-		CompraView c;
-		try {
-			c = new CompraView(this);
-		} catch (SQLException e) {
-			c=null;
-			e.printStackTrace();
-		}
+		HomeCliente c;
+                c = new HomeCliente(this);
 		c.setVisible(true);
 	}
-
-	@Override
-	public void cambiarAPelicula(HomeEmpleado gc) {
+        
+	public void cambiarATickets(HomeEmpleado gc) {
 		gc.setVisible(false);
-		CompraTickets_v1 ct;
-                ct = new CompraTickets_v1(this);
+		CompraTickets ct;
+                ct = new CompraTickets(this);
 		ct.setVisible(true);
 	}
 
-	@Override
-	public void cambiarAConfirma(FormaPago fp) {
+	
+	public void cambiarAConfirma(FormaDePago fp) {
 		fp.setVisible(false);
 		Recibo r=new Recibo(this);
 		r.setVisible(true);
 	}
 
-	@Override
+	
 	public void cambiarAConfirma(Pago p) {//OK!
 		p.setVisible(false);
 		Recibo r=new Recibo(this);
 		r.setVisible(true);
 	}
 
-	@Override
+	
 	public void cambiarAFormaPago(Recibo r) {//OK!
 		r.setVisible(false);
-		FormaPago fp=new FormaPago(this);
+		FormaDePago fp=new FormaDePago(this);
 		fp.setVisible(true);
 	}
 
-	@Override
+	
 	public void cambiarAHome2(Recibo r) {//OK!
 		r.setVisible(false);
 		HomeEmpleado gc= new HomeEmpleado(this,this.getModel());
 		gc.setVisible(true);
 	}
 	
-	@Override
+	
 	public void cambiarAPelicula(HomeCliente hc) {//OK!
 	}
 
-	@Override
+	
 	public void cambiarARecTick(HomeEmpleado gc) {
 		gc.setVisible(false);
-		RecibirTiket rt= new RecibirTiket(this);
+		ProcesarComprobante rt= new ProcesarComprobante(this);
 		rt.setVisible(true);
 	}
 
-	@Override
-	public void cambiarAHomeEmpleado(RecibirTiket rt) {
+	
+    @Override
+	public void cambiarAHomeEmpleado(ProcesarComprobante rt) {
 		rt.setVisible(false);
 		HomeEmpleado gc= new HomeEmpleado(this,this.getModel());
 		gc.setVisible(true);
 	}
 
-	@Override
+	
+    @Override
 	public ResultSet getRSProd(String s) {
 		return null;
 	}
 	
-	@Override
+	
+    @Override
 	public boolean agregarStock(int nombre, int cant) {
 		return false;
 	}
+        
 	
-	@Override
+    @Override
 	public boolean quitarStock(int nombre, int cant) {
 		return false;
 	}
 
-	@Override
+	
+    @Override
 	public boolean addProducto(String nombre, double precio, String string, String string2) {
 		return false;
 	}
 	
-	@Override
+	
+    @Override
 	public boolean clearProducto(int text) {
 		return false;
 	}
 
-	@Override
+	
+    @Override
 	public ResultSet getRSStock() {
 		try {
 			return model.getCargaBox().CargarStock();
@@ -242,7 +242,8 @@ public class ControllerEmp implements ControllerInterface{
 		}
 	}
 	
-	@Override
+	
+    @Override
 	public ResultSet setPelisBox() {
 		try {
 			return model.getPeliculas();
@@ -252,44 +253,56 @@ public class ControllerEmp implements ControllerInterface{
 		}
 	}
 
-	@Override
-	public boolean esDisponible(int idEvento, int idAsiento) {
+	
+    @Override
+	public boolean esDisponible(int idPelicula, int idAsiento) {
 		try {
-			return model.estaOcupado(idEvento,idAsiento);
+			return model.estaOcupado(idPelicula,idAsiento);
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return false;
 		}
 	}
 
-	public void iniciarCompra(int idEvento,int numEntrada) {
-		String codigoCompra= model.getObjCompra().getCodigo();
+	
+	public void iniciarCompra(int idEvento, String codigoCompra,String fila, int columna) {
+		//String codigoCompra= model.getObjCompra().getCodigo();
 		try {
-			model.comprarEntrada(idEvento, codigoCompra, numEntrada);
+			model.comprarEntrada(idEvento, codigoCompra,fila,columna);
 			
-			model.setOcupado(idEvento, numEntrada);
+			model.setOcupado(idEvento, model.getIdAsiento(fila, columna));
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
 
-	@Override
-	public Compra getCompraActual() {
-		return model.getObjCompraEmpleado();
-	}
-
-	@Override
+	
 	public boolean cantStock(int id, int cantidad) {
 		return false;
 	}
 
-	@Override
+	
 	public int getIdProd(String nombre) {
 		return 0;
 	}
 
     @Override
-    public void iniciarCompra(int idEvento, String fila, int columna) {
+    public void cambiarAPelicula(HomeEmpleado gc) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void cambiarAHome(Login l) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void cambiarACompraTickets(CompraTickets c) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public ResultSet setEventosBox() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 	

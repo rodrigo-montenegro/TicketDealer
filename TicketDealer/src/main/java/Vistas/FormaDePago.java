@@ -13,6 +13,8 @@ import Controlador.*;
  */
 public class FormaDePago extends javax.swing.JFrame {
 
+    private final ControllerInterface controller;
+
     /**
      * Creates new form FormaDePago1
      */
