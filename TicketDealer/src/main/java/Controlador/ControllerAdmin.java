@@ -176,12 +176,35 @@ public class ControllerAdmin implements ControllerInterface {
   }
 
   @Override
-	public boolean agregarStock(int IDprodNom,int cant){
+  public boolean agregarStock(int IDprodNom, int cant) {
+    try {
+      model.agregarStock(IDprodNom, cant);
+      return true;
+    } catch (SQLException e) {
+      e.printStackTrace();
+      return false;
+    }
+  }
+
+  @Override
+  public boolean quitarStock(int nombre, int cant) {
+    try {
+      model.quitarStock(nombre, cant);
+      return true;
+    } catch (SQLException e) {
+      e.printStackTrace();
+      return false;
+    }
+  }
+
+  @Override
+	public boolean addProducto(String nombre, double precio, String string, String string2) {
 		try {
-			model.agregarStock(IDprodNom,cant);
+			model.creaProducto(nombre, precio, string, string2);
 			return true;
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return false;
-			}
+		}
+		
 	}
