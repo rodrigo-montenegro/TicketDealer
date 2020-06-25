@@ -4,23 +4,18 @@
  * and open the template in the editor.
  */
 package Vistas;
-import main.java.controller.*;
-import main.java.controller.ControllerAdmin;
-import main.java.controller.ControllerEmp;
-import main.java.controller.ControllerInterface;
-import main.java.resources.Compra;
+import Controlador.*;
+
+
 /**
  *
  * @author santi
  */
 public class Home extends javax.swing.JFrame {
     public ControllerInterface controller;
-    /**
-     * Creates new form Home1
-     */
+    
     public Home() {
-        
-        controller=null;
+    	controller=null;
         initComponents();
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(this.EXIT_ON_CLOSE);
@@ -108,24 +103,22 @@ public class Home extends javax.swing.JFrame {
 
     private void jButton3LogCliente(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3LogCliente
         controller.cambiarAHome2(this);
-        Compra c=new Compra();
-        controller.getModel().GuardarCompra(c);
+        //Compra c=new Compra();
+        //controller.getModel().GuardarCompra(c);
         //Vistas.LogCliente.setVisible(true);
     }//GEN-LAST:event_jButton3LogCliente
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-         ControllerInterface cont= new ControllerAdmin(controller.getModel(),this);
+        ControllerInterface cont= new ControllerAdmin(controller.getModel(),this);
         cambiarController(cont);
     	controller.cambiarALogin(this);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-         ControllerInterface cont=new ControllerEmp(controller.getModel(),this);
+        ControllerInterface cont=new ControllerEmp(controller.getModel(),this);
     	cambiarController(cont);
-    	Compra c=new Compra();
-        controller.getModel().GuardarCompraEmpleado(c);
     	controller.cambiarALogin(this);   
     }//GEN-LAST:event_jButton2ActionPerformed
 
