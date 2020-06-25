@@ -9,12 +9,15 @@ import Controlador.*;
  *
  * @author santi
  */
-public class HomeCliente extends javax.swing.JFrame {
+public class HomeCliente extends javax.swing.JFrame 
+{
+    ControllerInterface controller;
 
     /**
      * Creates new form HomeCliente
      */
-    public HomeCliente(ControllerInterface controller) {
+    public HomeCliente(ControllerInterface controller) 
+    {
         this.controller=controller;
     	initComponents();
         this.setLocationRelativeTo(null);
