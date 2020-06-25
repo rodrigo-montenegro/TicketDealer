@@ -6,7 +6,9 @@
 package Controlador;
 
 import Model.Cargador;
+import Vistas.ConsultaStock;
 import Vistas.Home;
+import Vistas.HomeAdmin;
 import Vistas.HomeEmpleado;
 import Vistas.Login;
 import java.sql.SQLException;
@@ -119,4 +121,37 @@ public class ControllerEmp {
 	@Override
 	public void cambiarAHomeAdmin(CargaStock cs) {//OK!
 		}
+        @Override
+	public void cambiarAFormaPago(CompraView c) {//OK!
+		c.setVisible(false);
+		FormaPago fp= new FormaPago(this);
+		fp.setVisible(true);
+	}
+
+	@Override
+	public void cambiarACompra(FormaPago fp) {//OK!
+		fp.setVisible(false);
+		CompraView c;
+		try {
+			c = new CompraView(this);
+		} catch (SQLException e) {
+			e.printStackTrace();
+			c=null;
+		}
+		c.setVisible(true);
+	}
+
+	@Override
+	public void cambiarACompra(CompraTickets_v1 ct) {//OK!
+		ct.setVisible(false);
+		CompraView c;
+		try {
+			c = new CompraView(this);
+		} catch (SQLException e) {
+			c=null;
+			e.printStackTrace();
+		}
+		c.setVisible(true);
+	}
+        
 }
