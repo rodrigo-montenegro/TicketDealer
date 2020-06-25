@@ -1,18 +1,13 @@
 package Vistas;
-
-//import java.sql.ResultSet;
+import Model.*;
+import Controlador.*;
+import Resources.*;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.table.DefaultTableModel;
-import Controlador.*;
-
-
-//import main.java.controller.ControllerInterface;
-//import main.java.model.ModelSubject;
-
 public class ConsultaStock extends javax.swing.JFrame implements ViewObserver {
     
-	DefaultTableModel   consultaStock;
+    DefaultTableModel   consultaStock;
     ControllerInterface controller;
     ModelSubject model;
     private javax.swing.JButton jButton1;
@@ -77,11 +72,11 @@ public class ConsultaStock extends javax.swing.JFrame implements ViewObserver {
         );
 
         pack();
-//        model.registerObserver(this);
+        model.registerObserver(this);
     }
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
-  	controller.cambiarAHomeAdmin(this);
+    	controller.cambiarAHomeAdmin(this);
     }
     
     private String[] getColumnas() {//OK!
@@ -93,8 +88,9 @@ public class ConsultaStock extends javax.swing.JFrame implements ViewObserver {
         Object Datos[]= new Object[6];
         //ResultSet Stock=controller.getModel().CargarStock();
         ResultSet stock=controller.getRSStock();
+        if(stock!=null)
         while(stock.next()){
-           for(int i=0; i<6; i++){
+            for(int i=0; i<6; i++){
             Datos[i]= stock.getObject(i+1);
             }	
         consultaStock.addRow(Datos);

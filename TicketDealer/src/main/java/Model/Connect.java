@@ -1,24 +1,17 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Model;
-
+import Vistas.*;
+import Controlador.*;
+import Resources.*;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-/**
- *
- * @author Esteban
- */
 public class Connect {
-    String url = "jdbc:mysql://192.168.0.6:3306/proyectocine?useLegacyDatetimeCode=false&serverTimezone=UTC";
-    String user = "root";
-    String pass = "1234";
+    String url = "jdbc:mysql://localhost:3306/TicketDealer?useLegacyDatetimeCode=false&serverTimezone=UTC";
+    String user = "TicketDealer";
+    String pass = "1101";
     ResultSet rs ;
     Statement s ;
     Connection cnx;

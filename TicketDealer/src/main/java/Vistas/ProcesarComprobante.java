@@ -5,27 +5,29 @@
  */
 //PROCESARCOMPROBANTE=RECIBIRTIKET
 package Vistas;
-
-
+import Model.*;
 import Controlador.*;
+import Resources.*;
+
+
 /**
  *
  * @author santi
  */
 public class ProcesarComprobante extends javax.swing.JFrame {
 
-    private final ControllerInterface controller;
 
     /**
      * Creates new form ProcesarComprobante1
      */
-    public ProcesarComprobante(ControllerInterface controller) {
-        this.controller=controller;
+    public ProcesarComprobante() {
+       // this.controller=controller;
     	initComponents();
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(this.EXIT_ON_CLOSE);
         this.setResizable(false);
     }
+    //ControllerInterface controller
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -207,7 +209,7 @@ public class ProcesarComprobante extends javax.swing.JFrame {
     }//GEN-LAST:event_FechaActionPerformed
 
     private void ProcesarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProcesarActionPerformed
-        controller.cambiarAHomeEmpleado(this);
+        //controller.cambiarAHomeEmpleado(this);
     }//GEN-LAST:event_ProcesarActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

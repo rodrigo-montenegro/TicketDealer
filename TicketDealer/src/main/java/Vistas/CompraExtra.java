@@ -4,6 +4,9 @@
  * and open the template in the editor.
  */
 package Vistas;
+import Resources.*;
+import Model.*;
+import Controlador.*;
 
 /**
  *

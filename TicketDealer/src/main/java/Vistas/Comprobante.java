@@ -4,11 +4,14 @@
  * and open the template in the editor.
  */
 package Vistas;
-import javax.swing.JOptionPane;
+import Model.*;
 import Controlador.*;
+import Resources.*;
 import java.sql.ResultSet;
-/**
- *
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+
+ /*
  * @author santi
  */
 public class Comprobante extends javax.swing.JFrame {
@@ -250,7 +253,7 @@ ControllerInterface controller;
 
     private void generarComprobanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generarComprobanteActionPerformed
     	JOptionPane.showMessageDialog(null, "Compra realizada con exito");
-        controller.cambiarAHome2(this);
+        //controller.cambiarAHome2(this);
     }//GEN-LAST:event_generarComprobanteActionPerformed
 
     private void PagadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PagadoActionPerformed

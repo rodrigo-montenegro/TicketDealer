@@ -7,7 +7,7 @@ package Init;
 import  Vistas.*;
 import  Controlador.*;
 import  Model.*;
-import Resources.Administrador;
+import  Resources.*;
 import java.sql.SQLException;
 /**
  *
@@ -22,10 +22,10 @@ public class Main {
         Iniciar();
     }
     public static void Iniciar() throws SQLException{
-	Administrador a=Administrador.getInstancia("pepito", "1234");
+	//Administrador a=Administrador.getInstancia("pepito", "1234");
         Home h= new Home();
 	Cargador c=new Cargador();
-	c.cargarAdmin(a.getUsuario(),a.getPass());
+	//c.cargarAdmin(a.getUsuario(),a.getPass());
 	ControllerInterface controller = new ControllerCliente(c,h);
 	h.cambiarController(controller);
 	controller.iniciar();

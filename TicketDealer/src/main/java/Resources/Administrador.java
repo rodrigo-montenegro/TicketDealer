@@ -1,18 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Resources;
 
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author Scoles
- */
-public class Administrador 
-{
+public class Administrador {
 	private String usuario;
 	private String contrasena;
 	private String nombre;

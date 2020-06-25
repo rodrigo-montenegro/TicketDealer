@@ -1,20 +1,16 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Controlador;
-import Init.Main;
-import Vistas.*;
 import Model.*;
+import Vistas.*;
+import Resources.*;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-/**
- *
- * @author macbook
- */
-public class ControllerCliente implements ControllerInterface {
-   Cargador model;
+
+//import java.sql.SQLException;
+//import java.util.logging.Level;
+//import java.util.logging.Logger;
+
+public class ControllerCliente implements ControllerInterface{
+	Cargador model;
     Home view;
     String args = "iniciar";
     Connect c;
@@ -43,11 +39,11 @@ public class ControllerCliente implements ControllerInterface {
 	}
 	
 	@Override
-	public void cambiarACompra(CompraTickets ct) {//OK!
+	public void cambiarACompra(CompraTickets_v1 ct) {//OK!
 		ct.setVisible(false);
-		HomeCliente c;
+		CompraView c;
 		try {
-			c = new HomeCliente(this);
+			c = new CompraView(this);
 		} catch (SQLException e) {
 			c=null;
 			e.printStackTrace();
@@ -56,13 +52,13 @@ public class ControllerCliente implements ControllerInterface {
 	}
 	
 	@Override
-	public void cambiarAFormaPago(HomeCliente c) {//OK!
+	public void cambiarAFormaPago(CompraView c) {//OK!
 		c.setVisible(false);
-		FormaDePago fp= new FormaDePago(this);
+		FormaPago fp= new FormaPago(this);
 		fp.setVisible(true);
 	}
 	
-	public void cambiarAPago(FormaDePago fp) {//OK!
+	public void cambiarAPago(FormaPago fp) {//OK!
 		fp.setVisible(false);
 		Pago p= new Pago(this);
 		p.setVisible(true);
@@ -70,16 +66,16 @@ public class ControllerCliente implements ControllerInterface {
 	
 	public void	cambiarAFormaPago(Pago p) {//OK!
 		p.setVisible(false);
-		FormaDePago fp=new FormaDePago(this);
+		FormaPago fp=new FormaPago(this);
 		fp.setVisible(true);
 	}
 	
 	@Override
-	public void cambiarACompra(FormaDePago fp) {//OK!
+	public void cambiarACompra(FormaPago fp) {//OK!
 		fp.setVisible(false);
-		HomeCliente c;
+		CompraView c;
 		try {
-			c = new HomeCliente(this);
+			c = new CompraView(this);
 		} catch (SQLException e) {
 			c=null;
 			e.printStackTrace();
@@ -88,15 +84,15 @@ public class ControllerCliente implements ControllerInterface {
 	}
 	
 	@Override
-	public void cambiarACompraTickets(HomeCliente c) {//OK!
+	public void cambiarACompraTickets(CompraView c) {//OK!
 		c.setVisible(false);
-		CompraTickets ct;
-                ct = new CompraTickets(this);
+		CompraTickets_v1 ct;
+                ct = new CompraTickets_v1(this);
 		ct.setVisible(true);
 	}
 	
 	@Override
-	public void cambiarAHome2(CompraTickets ct) {//OK!
+	public void cambiarAHome2(CompraTickets_v1 ct) {//OK!
 		ct.setVisible(false);
 		HomeCliente hc= new HomeCliente(this);
 		hc.setVisible(true);
@@ -138,7 +134,7 @@ public class ControllerCliente implements ControllerInterface {
 	}
 
 	@Override
-	public void cambiarAHomeAdmin(cargaStock cs) {//OK!
+	public void cambiarAHomeAdmin(CargaStock cs) {//OK!
 	}
 	
 	@Override
@@ -150,7 +146,7 @@ public class ControllerCliente implements ControllerInterface {
 	}
 
 	@Override
-	public void cambiarAConfirma(FormaDePago fp) {
+	public void cambiarAConfirma(FormaPago fp) {
 		fp.setVisible(false);
 		Recibo r=new Recibo(this);
 		r.setVisible(true);
@@ -166,7 +162,7 @@ public class ControllerCliente implements ControllerInterface {
 	@Override
 	public void cambiarAFormaPago(Recibo r) {//OK!
 		r.setVisible(false);
-		FormaDePago fp=new FormaDePago(this);
+		FormaPago fp=new FormaPago(this);
 		fp.setVisible(true);
 	}
 
@@ -180,13 +176,8 @@ public class ControllerCliente implements ControllerInterface {
 	@Override
 	public void cambiarAPelicula(HomeCliente hc) {
 		hc.setVisible(false);
-		CompraTickets ct;
-		try {
-			ct = new CompraTickets(this);
-		} catch (SQLException e) {
-			e.printStackTrace();
-			ct=null;
-		}
+		CompraTickets_v1 ct;
+                ct = new CompraTickets_v1(this);
 		ct.setVisible(true);
 	}	
 	
@@ -195,7 +186,7 @@ public class ControllerCliente implements ControllerInterface {
 	}
 	
 	@Override
-	public void cambiarAHomeEmpleado(ProcesarComprobante rt) {
+	public void cambiarAHomeEmpleado(RecibirTiket rt) {
 	}
 
 	@Override
@@ -253,8 +244,21 @@ public class ControllerCliente implements ControllerInterface {
 		}
 	}
 
+	public void iniciarCompra(int idEvento,int numEntrada) {
+		String codigoCompra= model.getObjCompra().getCodigo();
+		try {
+			model.comprarEntrada(idEvento, codigoCompra, numEntrada);
+			
+			model.setOcupado(idEvento, numEntrada);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 	
-	
+	@Override
+	public Compra getCompraActual() {
+		return model.getObjCompra();
+	}
 
 	@Override
 	public boolean cantStock(int id, int cantidad) {
@@ -265,12 +269,10 @@ public class ControllerCliente implements ControllerInterface {
 	public int getIdProd(String nombre) {
 		return 0;
 	}
-        @Override
-	public Compra getCompraActual() {
-		return model.getObjCompra();
-	}
+
     @Override
-    public void cambiarACompraTickets(CompraTickets c) {
+    public void iniciarCompra(int idPelicula, String fila, int columna) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+	
 }
