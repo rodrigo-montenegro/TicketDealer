@@ -3,7 +3,30 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Controlador;
+//package Controlador;
+package main.java.controller;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import javax.swing.JOptionPane;
+
+import main.java.model.Cargador;
+import main.java.resources.Compra;
+import main.java.view.CargaStock;
+import main.java.view.CompraView;
+import main.java.view.CompraTickets_v1;
+import main.java.view.ConsultaStock;
+import main.java.view.HomeEmpleado;
+import main.java.view.Home;
+import main.java.view.HomeAdmin;
+import main.java.view.HomeCliente;
+import main.java.view.Login;
+import main.java.view.Pago;
+import main.java.view.RecibirTiket;
+import main.java.view.FormaPago;
+import main.java.view.Recibo;
+import main.java.view.*;
 
 /**
  *
