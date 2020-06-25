@@ -222,4 +222,77 @@ public class ControllerEmp {
 	public boolean agregarStock(int nombre, int cant) {
 		return false;
 	}
+        
+	@Override
+	public boolean quitarStock(int nombre, int cant) {
+		return false;
+	}
+
+	@Override
+	public boolean addProducto(String nombre, double precio, String string, String string2) {
+		return false;
+	}
+	
+	@Override
+	public boolean clearProducto(int text) {
+		return false;
+	}
+
+	@Override
+	public ResultSet getRSStock() {
+		try {
+			return model.getCargaBox().CargarStock();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
+	@Override
+	public ResultSet setPelisBox() {
+		try {
+			return model.getPeliculas();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+
+	@Override
+	public boolean esDisponible(int idPelicula, int idAsiento) {
+		try {
+			return model.estaOcupado(idPelicula,idAsiento);
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+
+	@Override
+	public void iniciarCompra(int idPelicula,String fila, int columna) {
+		String codigoCompra= model.getObjCompra().getCodigo();
+		try {
+			model.comprarEntrada(idPelicula, codigoCompra,fila,columna);
+			
+			model.setOcupado(idPelicula, model.getIdAsiento(fila, columna));
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
+	@Override
+	public Compra getCompraActual() {
+		return model.getObjCompraEmpleado();
+	}
+
+	@Override
+	public boolean cantStock(int id, int cantidad) {
+		return false;
+	}
+
+	@Override
+	public int getIdProd(String nombre) {
+		return 0;
+	}
+	
 }
