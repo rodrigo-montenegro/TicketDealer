@@ -270,6 +270,7 @@ public class ControllerCliente implements ControllerInterface{
 	public Compra getCompraActual() {
 		return model.getObjCompra();
 	}
+       
 
 	@Override
 	public boolean cantStock(int id, int cantidad) {
@@ -283,6 +284,11 @@ public class ControllerCliente implements ControllerInterface{
 
     @Override
     public void iniciarCompra(int idEvento, String fila, int columna) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public ResultSet getCarro(String t) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 	

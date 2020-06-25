@@ -65,11 +65,6 @@ public class Cargador implements ModelSubject{
 		cs.executeUpdate();
 	}
 	
-//	public void crearCode(Compra c){
-//		Generador g= new Generador();
-//		c.setCodigo(g.creaCode());
-//	}
-	
     public void quitarStock (int idprod,int cant) throws SQLException{
         cs= cn.getConnection().prepareCall("{call RestaStock(?,?)}");
         cs.setInt("p_ProdId", idprod);
@@ -447,6 +442,13 @@ public class Cargador implements ModelSubject{
 	    	id = rs.getInt(1);
 	    }
 	    return id;
+    }
+
+    public ResultSet getCarrito(String idCompra) throws SQLException{
+           ps =cn.getConnection().prepareStatement("select descprod,prodprecio from compra where idcompra like ?");
+           ps.setString(1, idCompra);
+           rs=ps.executeQuery();
+           return rs;
     }
     
 }

@@ -87,4 +87,6 @@ public interface ControllerInterface {
 	boolean cantStock(int id, int cantidad);
 	
 	int getIdProd(String nombre);
+
+    public ResultSet getCarro(String t);
 }

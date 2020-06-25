@@ -303,5 +303,10 @@ public class ControllerEmp implements ControllerInterface{
     public void iniciarCompra(int idEvento, String fila, int columna) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    @Override
+    public ResultSet getCarro(String t) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 	
 }
