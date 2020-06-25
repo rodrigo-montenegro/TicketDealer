@@ -4,18 +4,38 @@
  * and open the template in the editor.
  */
 package Vistas;
+import main.java.controller.ControllerInterface;
+import main.java.model.Cargador;
+import main.java.model.ModelSubject;
 
+import java.awt.HeadlessException;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import javax.swing.JOptionPane;
 /**
  *
  * @author santi
  */
 public class cargaStock extends javax.swing.JFrame {
-
+private String BoxSelect;
+	private String BoxSelect2;
+	private int SpinnerValue;
+	private int SpinnerValue2;
+	ResultSet rs ;
+    ControllerInterface controller;
+    ModelSubject subject;
     /**
      * Creates new form CargaStocks1
      */
-    public cargaStock() {
+    public cargaStock(ControllerInterface controller, ModelSubject subject) {
+     this.subject=subject;
+    	this.controller=controller;
         initComponents();
+        setBoxs();
+        this.setLocationRelativeTo(null);
+        this.setDefaultCloseOperation(this.EXIT_ON_CLOSE);
+        this.setResizable(false);   
     }
 
     /**
@@ -111,6 +131,11 @@ public class cargaStock extends javax.swing.JFrame {
         jPasswordField1.setText("jPasswordField1");
 
         jButton1.setText("VOLVER");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton4.setText("AGREGAR");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -135,7 +160,7 @@ public class cargaStock extends javax.swing.JFrame {
         jButton2.setText("AGREGAR");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2AgregarStock(evt);
+                AgregarStock(evt);
             }
         });
 
@@ -312,6 +337,13 @@ public class cargaStock extends javax.swing.JFrame {
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         // TODO add your handling code here:
+        double f = Double.parseDouble(jTextField2.getText());
+        if(controller.addProducto(jTextField1.getText(), f , "comida", "prueba")){
+        	JOptionPane.showMessageDialog(null, "Agregado correctamente");
+        }else{
+        	JOptionPane.showMessageDialog(null, "Se ha producido un error al agregar el producto");
+        }
+        
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
@@ -319,7 +351,15 @@ public class cargaStock extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField5ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        // TODO add your handling code here:
+   try {
+    		if(controller.clearProducto(controller.getIdProd(jTextField5.getText()))){
+    		    JOptionPane.showMessageDialog(null, "Se Borro: " + jTextField5.getText()) ;
+    		}else{
+    			JOptionPane.showMessageDialog(null, "Se ha producido un error en la eliminacion del producto");
+    		}			
+		} catch (HeadlessException e) {
+			e.printStackTrace();
+		}
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -330,9 +370,18 @@ public class cargaStock extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
-    private void jButton2AgregarStock(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2AgregarStock
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2AgregarStock
+    private void AgregarStock(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarStock
+          
+        BoxSelect= (String) jComboBox1.getSelectedItem();
+    	SpinnerValue = Integer.parseInt(jSpinner1.getValue().toString());
+        if(controller.agregarStock(controller.getIdProd(getBoxSelect()),SpinnerValue)){
+        	JOptionPane.showMessageDialog(null, "Se agrego: "+ getSpinnerValue() +" " + getBoxSelect());
+        	setBoxs();
+        }else{
+        	JOptionPane.showMessageDialog(null, "Se ha producido un error en la carga del producto");
+        }
+    
+    }//GEN-LAST:event_AgregarStock
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
@@ -343,13 +392,55 @@ public class cargaStock extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBox2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
+       SpinnerValue2 = Integer.parseInt(jSpinner2.getValue().toString());
+        BoxSelect2= (String) jComboBox2.getSelectedItem();
+        int id=controller.getIdProd(BoxSelect2);
+        if(controller.cantStock(id, SpinnerValue2)){
+        	if(controller.quitarStock(id,SpinnerValue2)){
+                JOptionPane.showMessageDialog(null, "Se Quito: "+ SpinnerValue2 +" " + BoxSelect2);
+            }else{
+            	JOptionPane.showMessageDialog(null, "Se ha producido un error en la quita del producto");
+            }
+        }
+        else{
+        	JOptionPane.showMessageDialog(null, "Cantidad mayor al stock");
+        }
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton7ActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+controller.cambiarAHomeAdmin(this);        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+public String getBoxSelect(){
+    	return BoxSelect;
+    }
+    
+    public int getSpinnerValue(){ 
+    return SpinnerValue;
+    }
+    
+    public void setBoxs() {//throws SQLException{
+    	jComboBox1.removeAllItems();
+    	jComboBox2.removeAllItems();
+    	rs=controller.getRSProd("select * from productos");
+    	try {
+			while(rs.next()){
+				jComboBox1.addItem(rs.getString(2) );
+				jComboBox2.addItem(rs.getString(2) );
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} 
+    }
+
+	@Override
+	public void update() {
+		this.setBoxs();
+	}
+    
     /**
      * @param args the command line arguments
      */
