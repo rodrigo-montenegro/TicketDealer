@@ -1,36 +1,38 @@
 package Vistas;
 
 //import java.sql.ResultSet;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.table.DefaultTableModel;
+import main.java.controller.ControllerInterface;
+import main.java.model.ModelSubject;
+
 //import main.java.controller.ControllerInterface;
 //import main.java.model.ModelSubject;
 
-public class ConsultaStock extends javax.swing.JFrame 
-//        implements ViewObserver 
-{
+public class ConsultaStock extends javax.swing.JFrame implements ViewObserver {
     
 	DefaultTableModel   consultaStock;
-//    ControllerInterface controller;
-//    ModelSubject model;
+    ControllerInterface controller;
+    ModelSubject model;
     private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
     
-//    public ConsultaStock(ControllerInterface controller, ModelSubject model) {
-//        this.controller=controller;
-//        this.model=model;
-//    	consultaStock=new DefaultTableModel(null, getColumnas());
-//        try {
-//			this.setFilas();
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//		}
-//        initComponents();
-//        this.setLocationRelativeTo(null);
-//        this.setResizable(false);
-//        
-//    }
+    public ConsultaStock(ControllerInterface controller, ModelSubject model) {
+        this.controller=controller;
+        this.model=model;
+    	consultaStock=new DefaultTableModel(null, getColumnas());
+        try {
+			this.setFilas();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+        initComponents();
+        this.setLocationRelativeTo(null);
+        this.setResizable(false);
+        
+    }
 
     private void initComponents() {
 
@@ -79,7 +81,7 @@ public class ConsultaStock extends javax.swing.JFrame
     }
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
-//    	controller.cambiarAHomeAdmin(this);
+  	controller.cambiarAHomeAdmin(this);
     }
     
     private String[] getColumnas() {//OK!
@@ -90,13 +92,13 @@ public class ConsultaStock extends javax.swing.JFrame
     private void setFilas() throws SQLException{//OK!
         Object Datos[]= new Object[6];
         //ResultSet Stock=controller.getModel().CargarStock();
-//        ResultSet stock=controller.getRSStock();
-//        while(stock.next()){
-//            for(int i=0; i<6; i++){
-//            Datos[i]= stock.getObject(i+1);
-//            }	
-//        consultaStock.addRow(Datos);
-//        }
+        ResultSet stock=controller.getRSStock();
+        while(stock.next()){
+           for(int i=0; i<6; i++){
+            Datos[i]= stock.getObject(i+1);
+            }	
+        consultaStock.addRow(Datos);
+        }
     }
 
     private void cleanRows(){//OK!
@@ -106,14 +108,14 @@ public class ConsultaStock extends javax.swing.JFrame
         }
     } 
 
-//	@Override
-//	public void update() {//OK!
-//		try {
-//			this.cleanRows();
-//			this.setFilas();
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//		}
-//	}
+	@Override
+	public void update() {//OK!
+		try {
+			this.cleanRows();
+			this.setFilas();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 	
 }
