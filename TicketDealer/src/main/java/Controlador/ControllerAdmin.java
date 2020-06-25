@@ -134,5 +134,33 @@ public class ControllerAdmin implements ControllerInterface {
   }
 
   @Override
-	public void cambiarACompra(CompraTickets_v1 ct) {//OK!
+  public void cambiarACompra(CompraTickets_v1 ct) {// OK!
+  }
+
+  @Override
+  public void cambiarAConfirma(FormaPago fp) {// OK!
+  }
+
+  @Override
+  public void cambiarAConfirma(Pago p) {// OK!
+  }
+
+  @Override
+  public void cambiarAFormaPago(Recibo r) {// OK!
+  }
+
+  @Override
+  public void cambiarAHome2(Recibo r) {// OK!
+  }
+
+  @Override
+  public void cambiarAPelicula(HomeCliente hc) {// OK!
+  }
+
+  @Override
+  public void cambiarARecTick(HomeEmpleado gc) {// OK!
+  }
+
+  @Override
+	public void cambiarAHomeEmpleado(RecibirTiket rt) {
 	}
