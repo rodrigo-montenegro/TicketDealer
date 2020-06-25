@@ -6,23 +6,39 @@
 package Vistas;
 
 import Controlador.ControllerEmp;
+import main.java.controlador.*;
+import main.java.controlador.ControllerInterface;
+import main.java.model.Cargador;
 
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import main.java.resources.*;
+import javax.swing.JOptionPane;
 /**
  *
  * @author Esteban
  */
 public class Login extends javax.swing.JFrame {
-
+private String User;
+	private String Pass;
+	private String UserR;
+	private String PassR;
+	private String PassR2;
+	Cargador c;    			//no deberia ir
+	ControllerInterface controller;
     /**
      * Creates new form Login1
      */
-    public Login() {
-        initComponents();
+    public Login(ControllerInterface controller) {
+        this.controller= controller;
+    	initComponents();
+        this.setLocationRelativeTo(null);
+        this.setDefaultCloseOperation(this.EXIT_ON_CLOSE);
+        this.setResizable(false);
     }
 
-    public Login(ControllerEmp aThis) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -220,10 +236,8 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-          Home home = new Home();
-        home.setVisible(true);
-        this.setVisible(false);
+        // cambia a home
+          controller.cambiarAHome(this);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
@@ -235,23 +249,52 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_jPasswordField1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+        // inicia sesion
+        this.Pass=jPasswordField1.getText();
+        this.User=jTextField1.getText();
+    	if(controller.esValido(User, Pass)){
+                	controller.cambiarAHome2(this);
+                }
+                else{
+                	JOptionPane.showMessageDialog(null, "Usuario o contraseña erronea");
+                }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
-        // TODO add your handling code here:
+        this.UserR=jTextField2.getText().toLowerCase();
     }//GEN-LAST:event_jTextField2ActionPerformed
 
     private void jPasswordField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField2ActionPerformed
-        // TODO add your handling code here:
+        this.PassR=jPasswordField2.getText().toLowerCase();
     }//GEN-LAST:event_jPasswordField2ActionPerformed
 
     private void jPasswordField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField3ActionPerformed
-        // TODO add your handling code here:
+        this.PassR2=jPasswordField3.getText().toLowerCase();
     }//GEN-LAST:event_jPasswordField3ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+this.UserR = jTextField2.getText();
+            this.PassR = jPasswordField2.getText();
+            this.PassR2 = jPasswordField3.getText();
+                // ACA VA RENOVAR PASS
+                int id=0;
+            try {
+                id= controller.getModel().getIdUsuario(UserR, PassR);
+                System.out.println("id:"+id+ "|| user: "+ UserR + "\\ pass:"+ PassR);
+            } catch (SQLException ex) {
+                              	JOptionPane.showMessageDialog(null, "Error al ingresar credenciales");
+            }
+                if(id!=0){
+                    try {
+                        controller.getModel().renovarClave(id,PassR2);
+                        JOptionPane.showMessageDialog(null, "Renovado con exito");
 
+                    } catch (SQLException ex) {
+                        Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                              
+            }
+                else JOptionPane.showMessageDialog(null, "Error al ingresar credenciales");
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
