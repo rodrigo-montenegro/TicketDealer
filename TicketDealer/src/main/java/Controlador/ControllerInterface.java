@@ -16,7 +16,7 @@ public interface ControllerInterface {
 	
 	void cambiarAHome2(Home v);
 	
-	void cambiarAPelicula(HomeEmpleado gc);
+	void cambiarAEntradas(HomeEmpleado gc);
 	
 	void cambiarAHome(Login l);
 	
@@ -58,7 +58,7 @@ public interface ControllerInterface {
 
 	void cambiarAHome2(Recibo r);
 
-	void cambiarAPelicula(HomeCliente hc);
+	void cambiarAEntradas(HomeCliente hc);
 	
 	void cambiarARecTick(HomeEmpleado gc);
 	
@@ -76,7 +76,7 @@ public interface ControllerInterface {
 
 	ResultSet getRSStock();
 
-	ResultSet setPelisBox();
+	ResultSet setEventosBox();
 	
 	public boolean esDisponible(int idPelicula, int idAsiento);
 	

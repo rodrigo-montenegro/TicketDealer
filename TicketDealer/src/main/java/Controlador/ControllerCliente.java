@@ -138,7 +138,7 @@ public class ControllerCliente implements ControllerInterface{
 	}
 	
 	@Override
-	public void cambiarAPelicula(HomeEmpleado gc) {//OK!
+	public void cambiarAEntradas(HomeEmpleado gc) {//OK!
 	}
 
 	@Override
@@ -174,7 +174,7 @@ public class ControllerCliente implements ControllerInterface{
 	}
 
 	@Override
-	public void cambiarAPelicula(HomeCliente hc) {
+	public void cambiarAEntradas(HomeCliente hc) {
 		hc.setVisible(false);
 		CompraTickets_v1 ct;
                 ct = new CompraTickets_v1(this);
@@ -225,9 +225,9 @@ public class ControllerCliente implements ControllerInterface{
 	}
 
 	@Override
-	public ResultSet setPelisBox() {
+	public ResultSet setEventosBox() {
 		try {
-			return model.getPeliculas();
+			return model.getEventos();
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return null;
@@ -235,9 +235,9 @@ public class ControllerCliente implements ControllerInterface{
 	}
 	
 	@Override
-	public boolean esDisponible(int idPelicula, int idAsiento) {
+	public boolean esDisponible(int idEvento, int idAsiento) {
 		try {
-			return model.estaOcupado(idPelicula,idAsiento);
+			return model.estaOcupado(idEvento,idAsiento);
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return false;
@@ -271,7 +271,7 @@ public class ControllerCliente implements ControllerInterface{
 	}
 
     @Override
-    public void iniciarCompra(int idPelicula, String fila, int columna) {
+    public void iniciarCompra(int idEvento, String fila, int columna) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 	

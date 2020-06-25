@@ -111,7 +111,7 @@ public class ControllerAdmin implements ControllerInterface{
 	}
 
 	@Override
-	public void cambiarAPelicula(HomeEmpleado gc) {//OK!
+	public void cambiarAEntradas(HomeEmpleado gc) {//OK!
 	}
 
 	@Override
@@ -155,7 +155,7 @@ public class ControllerAdmin implements ControllerInterface{
 	}
 	
 	@Override
-	public void cambiarAPelicula(HomeCliente hc) {//OK!
+	public void cambiarAEntradas(HomeCliente hc) {//OK!
 	}
 	
 	@Override
@@ -232,7 +232,7 @@ public class ControllerAdmin implements ControllerInterface{
 	}
 
 	@Override
-	public ResultSet setPelisBox() {
+	public ResultSet setEventosBox() {
 		return null;
 	}
 

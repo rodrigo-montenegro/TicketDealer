@@ -235,16 +235,16 @@ public class Cargador implements ModelSubject{
         return rs;
    }
 	
-   public ResultSet getPeliculas() throws SQLException{//OK!
+   public ResultSet getEventos() throws SQLException{//OK!
        s = cn.getConnection().createStatement();
-       rs = s.executeQuery("select * from eventos");
+       rs = s.executeQuery("select idevento,nombre,ubicacion,numentrada,precio from eventos");
        return rs;
    }
    
-   public int getIdPelicula(String nomPelicula)throws SQLException{
+   public int getIdEvento(String nomEvento)throws SQLException{
 	   int id=0;
 	   ps=cn.getConnection().prepareStatement("select idevento from evento where nombre= ?");
-	   ps.setString(1, nomPelicula);
+	   ps.setString(1, nomEvento);
 	   rs=ps.executeQuery();
 	   while(rs.next()){
 		   id=rs.getInt(1);

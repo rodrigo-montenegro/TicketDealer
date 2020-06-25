@@ -154,7 +154,7 @@ public class ControllerEmp implements ControllerInterface{
 	}
 
 	@Override
-	public void cambiarAPelicula(HomeEmpleado gc) {
+	public void cambiarAEntradas(HomeEmpleado gc) {
 		gc.setVisible(false);
 		CompraTickets_v1 ct;
                 ct = new CompraTickets_v1(this);
@@ -190,7 +190,7 @@ public class ControllerEmp implements ControllerInterface{
 	}
 	
 	@Override
-	public void cambiarAPelicula(HomeCliente hc) {//OK!
+	public void cambiarAEntradas(HomeCliente hc) {//OK!
 	}
 
 	@Override
@@ -243,9 +243,9 @@ public class ControllerEmp implements ControllerInterface{
 	}
 	
 	@Override
-	public ResultSet setPelisBox() {
+	public ResultSet setEventosBox() {
 		try {
-			return model.getPeliculas();
+			return model.getEventos();
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return null;

@@ -151,7 +151,7 @@ public class HomeEmpleado extends javax.swing.JFrame implements ViewObserver{
 	}
     
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//OK!
-    	controller.cambiarAPelicula(this);
+    	controller.cambiarAEntradas(this);
     }
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//OK!
