@@ -110,5 +110,13 @@ public class ControllerAdmin implements ControllerInterface {
   }
 
   @Override
-	public void cambiarAPelicula(HomeEmpleado gc) {//OK!
+  public void cambiarAPelicula(HomeEmpleado gc) {// OK!
+  }
+
+  @Override
+  public void cambiarAHome(HomeEmpleado gc) {// OK!
+  }
+
+  @Override
+	public void cambiarAFormaPago(CompraView c) {//OK!
 	}
