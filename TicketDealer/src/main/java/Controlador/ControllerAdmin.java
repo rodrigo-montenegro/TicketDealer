@@ -80,10 +80,35 @@ public class ControllerAdmin implements ControllerInterface {
   }
 
   @Override
-	public void cambiarACargaStock(HomeAdmin h) {//OK!
-		h.setVisible(false);
-    	CargaStock cs = new CargaStock(this,getModel());
-    	ConsultaStock cos= new ConsultaStock(this,getModel());
-    	cs.setVisible(true);
-    	cos.setVisible(true);
+  public void cambiarACargaStock(HomeAdmin h) {// OK!
+    h.setVisible(false);
+    CargaStock cs = new CargaStock(this, getModel());
+    ConsultaStock cos = new ConsultaStock(this, getModel());
+    cs.setVisible(true);
+    cos.setVisible(true);
+  }
+
+  @Override
+  public void cambiarAConsultaStock(HomeAdmin h) {// OK!
+    h.setVisible(false);
+    ConsultaStock cs = new ConsultaStock(this, getModel());
+    cs.setVisible(true);
+  }
+
+  @Override
+  public void cambiarAHomeAdmin(ConsultaStock cs) {// OK!
+    cs.setVisible(false);
+    HomeAdmin h = new HomeAdmin(this);
+    h.setVisible(true);
+  }
+
+  @Override
+  public void cambiarAHomeAdmin(CargaStock cs) {// OK!
+    cs.setVisible(false);
+    HomeAdmin h = new HomeAdmin(this);
+    h.setVisible(true);
+  }
+
+  @Override
+	public void cambiarAPelicula(HomeEmpleado gc) {//OK!
 	}
