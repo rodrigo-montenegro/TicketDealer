@@ -207,4 +207,63 @@ public class ControllerAdmin implements ControllerInterface {
       return false;
     }
   }
+
+  @Override
+  public boolean clearProducto(int text) {
+    try {
+      model.borraProducto(text);
+      return true;
+    } catch (SQLException e) {
+      e.printStackTrace();
+      return false;
+    }
+  }
+
+  @Override
+  public ResultSet getRSStock() {// OK!!
+    return null;
+  }
+
+  @Override
+  public ResultSet setPelisBox() {
+    return null;
+  }
+
+  @Override
+  public boolean esDisponible(int idPelicula, int idAsiento) {
+    return false;
+  }
+
+  @Override
+  public void iniciarCompra(int idPelicula, String fila, int columna) {
+  }
+
+  @Override
+  public Compra getCompraActual() {
+    return null;
+  }
+
+  public boolean cantStock(int id, int cantidad) {
+    int stock;
+    try {
+      stock = this.getModel().getStockProducto(id);
+      if (cantidad > stock) {
+        return false;
+      }
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
+    return true;
+  }
+
+  @Override
+  public int getIdProd(String nombre) {
+    int i = 0;
+    try {
+      return model.getIdPorNombre(nombre);
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
+    return i;
+  }
 }
