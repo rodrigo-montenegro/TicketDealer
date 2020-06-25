@@ -4,18 +4,26 @@
  * and open the template in the editor.
  */
 package Vistas;
+import java.sql.SQLException;
 
+import main.java.controller.*;
+import main.java.controller.ControllerInterface;
 /**
  *
  * @author santi
  */
+ControllerInterface	controller;
 public class FormaDePago extends javax.swing.JFrame {
 
     /**
      * Creates new form FormaDePago1
      */
-    public FormaDePago() {
-        initComponents();
+    public FormaDePago(ControllerInterface controller) {
+        this.controller=controller;
+    	initComponents();
+        this.setLocationRelativeTo(null);
+        this.setDefaultCloseOperation(this.EXIT_ON_CLOSE);
+        this.setResizable(false);
     }
 
     /**
@@ -37,6 +45,11 @@ public class FormaDePago extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jButton1.setText("VOLVER");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 24)); // NOI18N
         jLabel1.setText("SELECCIONE FORMA DE PAGO");
@@ -122,16 +135,29 @@ public class FormaDePago extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
-        // TODO add your handling code here:
+        controller.cambiarAPago(this);
+        controller.getCompraActual().definirFormaPago(3);
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
     private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
-        // TODO add your handling code here:
+controller.getCompraActual().empleadoTrue();
+        controller.getCompraActual().definirFormaPago(1);
+        try {
+            controller.getCompraActual().setTotal(controller.getCompraActual().obtenerObjFormaPago().pagar(controller.getModel().getPrecioFinal(controller.getCompraActual().getCodigo())));
+        	controller.getModel().setEmpleado(1,"Efectivo", controller.getCompraActual().getCodigo());
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+    	controller.cambiarAConfirma(this);        // TODO add your handling code here:
     }//GEN-LAST:event_jToggleButton2ActionPerformed
 
     private void jToggleButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton4ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jToggleButton4ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        controller.cambiarACompra(this);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
