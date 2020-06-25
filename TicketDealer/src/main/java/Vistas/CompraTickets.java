@@ -5,7 +5,7 @@
  */
 package Vistas;
 
-import Controlador.ControllerInterface;
+import Controlador.*;
 
 /**
  *

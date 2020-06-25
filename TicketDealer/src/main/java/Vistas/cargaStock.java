@@ -4,10 +4,7 @@
  * and open the template in the editor.
  */
 package Vistas;
-import main.java.controller.ControllerInterface;
-import main.java.model.Cargador;
-import main.java.model.ModelSubject;
-
+import Controlador.*;
 import java.awt.HeadlessException;
 import java.sql.ResultSet;
 import java.sql.SQLException;

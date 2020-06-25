@@ -4,8 +4,8 @@
  * and open the template in the editor.
  */
 package Vistas;
-import main.java.controller.*;
-import main.java.controller.ControllerInterface;
+import Controlador.*;
+
 /**
  *
  * @author santi

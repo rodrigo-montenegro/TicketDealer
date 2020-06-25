@@ -6,6 +6,7 @@
 package Init;
 import  Vistas.*;
 import  Controlador.*;
+import  Model.*;
 /**
  *
  * @author macbook
@@ -19,8 +20,12 @@ public class Main {
         Iniciar();
     }
     public static void Iniciar(){
-        Home home = new Home();
-        home.setVisible(true);
+        Home h= new Home();
+	Cargador c=new Cargador();
+	c.cargarAdmin(a.getUsuario(),a.getPass());
+	ControllerInterface controller = new ControllerCliente(c,h);
+	h.cambiarController(controller);
+	controller.iniciar();
         }
     public static void pruebacambiar(){
         //controlador.CambiarHomeACliente(home, logcliente);

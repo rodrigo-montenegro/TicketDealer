@@ -5,14 +5,12 @@
  */
 package Vistas;
 import java.sql.SQLException;
+import Controlador.*;
 
-import main.java.controller.*;
-import main.java.controller.ControllerInterface;
 /**
  *
  * @author santi
  */
-ControllerInterface	controller;
 public class FormaDePago extends javax.swing.JFrame {
 
     /**

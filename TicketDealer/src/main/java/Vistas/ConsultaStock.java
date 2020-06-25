@@ -4,8 +4,8 @@ package Vistas;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.table.DefaultTableModel;
-import main.java.controller.ControllerInterface;
-import main.java.model.ModelSubject;
+import Controlador.*;
+
 
 //import main.java.controller.ControllerInterface;
 //import main.java.model.ModelSubject;

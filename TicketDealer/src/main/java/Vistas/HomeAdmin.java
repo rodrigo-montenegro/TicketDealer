@@ -7,8 +7,6 @@ package Vistas;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import main.java.controlador.*;
-import main.java.controlador.ControllerInterface;
 import Controlador.*;
 /**
  *
