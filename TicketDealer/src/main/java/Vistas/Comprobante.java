@@ -4,13 +4,8 @@
  * and open the template in the editor.
  */
 package Vistas;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-
 import javax.swing.JOptionPane;
-
-import main.java.controller.*;
-import main.java.controller.ControllerInterface;
+import Controlador.*;
 /**
  *
  * @author santi
@@ -21,7 +16,7 @@ ControllerInterface controller;
      * Creates new form Comprobante1
      */
     public Comprobante(ControllerInterface controller) {
-		this.controller=controller;
+        this.controller=controller;
         initComponents();
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(this.EXIT_ON_CLOSE);
@@ -52,8 +47,8 @@ ControllerInterface controller;
         jLabel6 = new javax.swing.JLabel();
         cobradoPor = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JTextField();
         generarComprobante = new javax.swing.JButton();
+        Pagado = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -113,18 +108,18 @@ ControllerInterface controller;
 
         jLabel7.setText("PAGADO");
 
-        jLabel8.setText("jTextField1");
-        jLabel8.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jLabel8ActionPerformed(evt);
-            }
-        });
-
         generarComprobante.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 24)); // NOI18N
         generarComprobante.setText("GENERAR COMPROBANTE");
         generarComprobante.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 generarComprobanteActionPerformed(evt);
+            }
+        });
+
+        Pagado.setText("jTextField1");
+        Pagado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PagadoActionPerformed(evt);
             }
         });
 
@@ -149,7 +144,7 @@ ControllerInterface controller;
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel7)
                                 .addGap(40, 40, 40)
-                                .addComponent(jLabel8))
+                                .addComponent(Pagado))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel5)
                                 .addGap(46, 46, 46)
@@ -198,7 +193,7 @@ ControllerInterface controller;
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Pagado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(38, 38, 38)
                 .addComponent(generarComprobante)
                 .addContainerGap(99, Short.MAX_VALUE))
@@ -252,15 +247,14 @@ ControllerInterface controller;
         // TODO add your handling code here:
     }//GEN-LAST:event_cobradoPorActionPerformed
 
-    private void jLabel8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jLabel8ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jLabel8ActionPerformed
-
     private void generarComprobanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generarComprobanteActionPerformed
-       controller.getCompraActual().resetCompra();
     	JOptionPane.showMessageDialog(null, "Compra realizada con exito");
         controller.cambiarAHome2(this);
     }//GEN-LAST:event_generarComprobanteActionPerformed
+
+    private void PagadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PagadoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_PagadoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -286,6 +280,7 @@ ControllerInterface controller;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField Descripcion;
     private javax.swing.JTextField Fecha;
+    private javax.swing.JTextField Pagado;
     private javax.swing.JTextField Total;
     private javax.swing.JTextField cobradoPor;
     private javax.swing.JButton generarComprobante;
@@ -296,7 +291,6 @@ ControllerInterface controller;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JTextField jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField metodoPago;
     private javax.swing.JTextField numeroCompra;

@@ -287,5 +287,20 @@ public class ControllerEmp implements ControllerInterface{
 	public int getIdProd(String nombre) {
 		return 0;
 	}
+
+    @Override
+    public void cambiarAPelicula(HomeEmpleado gc) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void cambiarAHome(Login l) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void cambiarACompraTickets(CompraTickets c) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 	
 }
