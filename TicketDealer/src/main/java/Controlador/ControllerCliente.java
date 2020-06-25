@@ -138,7 +138,7 @@ public class ControllerCliente implements ControllerInterface {
 	}
 
 	@Override
-	public void cambiarAHomeAdmin(CargaStock cs) {//OK!
+	public void cambiarAHomeAdmin(cargaStock cs) {//OK!
 	}
 	
 	@Override
@@ -150,7 +150,7 @@ public class ControllerCliente implements ControllerInterface {
 	}
 
 	@Override
-	public void cambiarAConfirma(FormaPago fp) {
+	public void cambiarAConfirma(FormaDePago fp) {
 		fp.setVisible(false);
 		Recibo r=new Recibo(this);
 		r.setVisible(true);
@@ -166,7 +166,7 @@ public class ControllerCliente implements ControllerInterface {
 	@Override
 	public void cambiarAFormaPago(Recibo r) {//OK!
 		r.setVisible(false);
-		FormaPago fp=new FormaPago(this);
+		FormaDePago fp=new FormaDePago(this);
 		fp.setVisible(true);
 	}
 
@@ -195,7 +195,7 @@ public class ControllerCliente implements ControllerInterface {
 	}
 	
 	@Override
-	public void cambiarAHomeEmpleado(RecibirTiket rt) {
+	public void cambiarAHomeEmpleado(ProcesarComprobante rt) {
 	}
 
 	@Override
@@ -265,7 +265,10 @@ public class ControllerCliente implements ControllerInterface {
 	public int getIdProd(String nombre) {
 		return 0;
 	}
-
+        @Override
+	public Compra getCompraActual() {
+		return model.getObjCompra();
+	}
     @Override
     public void cambiarACompraTickets(CompraTickets c) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

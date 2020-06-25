@@ -14,13 +14,13 @@ import Controlador.*;
 public class Home extends javax.swing.JFrame {
     public ControllerInterface controller;
     
-        public Home(ControllerInterface controller) {
+
+    public Home(ControllerInterface controller) {
             this.controller=controller;
             initComponents();
             this.setLocationRelativeTo(null);
             this.setDefaultCloseOperation(this.EXIT_ON_CLOSE);
-            this.setResizable(false);   
-        }
+            this.setResizable(false);       }
 
     /**
      * This method is called from within the constructor to initialize the form.

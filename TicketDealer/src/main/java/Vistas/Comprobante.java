@@ -6,6 +6,7 @@
 package Vistas;
 import javax.swing.JOptionPane;
 import Controlador.*;
+import java.sql.ResultSet;
 /**
  *
  * @author santi
