@@ -26,7 +26,8 @@ public class Cargador {
     Statement s ;
     CargaBox cb;
     
-	public Cargador() throws SQLException{
+	public Cargador() throws SQLException
+        {
 	//	observers= new ArrayList<ViewObserver>();
         cn = new Connect();
         cb= new CargaBox();           

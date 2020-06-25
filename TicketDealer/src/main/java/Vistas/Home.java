@@ -21,6 +21,14 @@ public class Home extends javax.swing.JFrame {
             this.setLocationRelativeTo(null);
             this.setDefaultCloseOperation(this.EXIT_ON_CLOSE);
             this.setResizable(false);       }
+    
+    public Home() 
+    {
+    	controller=null;
+        initComponents();
+        this.setLocationRelativeTo(null);
+        this.setDefaultCloseOperation(this.EXIT_ON_CLOSE);
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.

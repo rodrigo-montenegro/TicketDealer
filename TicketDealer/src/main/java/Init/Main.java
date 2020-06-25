@@ -7,6 +7,7 @@ package Init;
 import  Vistas.*;
 import  Controlador.*;
 import  Model.*;
+import Resources.Administrador;
 import java.sql.SQLException;
 /**
  *
@@ -14,13 +15,14 @@ import java.sql.SQLException;
  */
 public class Main {
     
-    public static void main(String args[]) {
+    public static void main(String args[]) throws SQLException {
         System.out.println("Probando");
         System.out.println("Commit Seba");
         System.out.println("Commit Santi");
         Iniciar();
     }
     public static void Iniciar() throws SQLException{
+	Administrador a=Administrador.getInstancia("pepito", "1234");
         Home h= new Home();
 	Cargador c=new Cargador();
 	c.cargarAdmin(a.getUsuario(),a.getPass());
