@@ -33,6 +33,7 @@ public class ControllerEmp implements ControllerInterface{
         l.setVisible(true);
         //setborn("a");
 	}
+    @Override
 	public void cambiarAHome2(Login l) {//OK!
 		l.setVisible(false);
 		HomeEmpleado gc =new HomeEmpleado(this,this.getModel());
@@ -47,7 +48,6 @@ public class ControllerEmp implements ControllerInterface{
 		//h.initComponents();
 		h.setVisible(true);
 	}
-    @Override
 	public void cambiarAHome2(CompraTickets ct) {
 		ct.setVisible(false);
 		HomeEmpleado gc =new HomeEmpleado(this,this.getModel());
@@ -67,6 +67,7 @@ public class ControllerEmp implements ControllerInterface{
 	}
 
 	
+    @Override
 	public void cambiarAPago(FormaDePago fp) {//OK!
 		fp.setVisible(false);
                 Pago p= new Pago(this);
@@ -98,18 +99,22 @@ public class ControllerEmp implements ControllerInterface{
 		//return true;
 	}
 
+    @Override
 	public void cambiarALogin(HomeAdmin home) {//OK!
 	}
 
 	
+    @Override
 	public void cambiarACargaStock(HomeAdmin h) {//OK!
 	}
 
 	
+    @Override
 	public void cambiarAConsultaStock(HomeAdmin h) {//OK!
 	}
 
 	
+    @Override
 	public void cambiarAHomeAdmin(ConsultaStock cs) {//OK!
 	}
 
@@ -189,6 +194,7 @@ public class ControllerEmp implements ControllerInterface{
 	}
 
 	
+    @Override
 	public void cambiarAHomeEmpleado(ProcesarComprobante rt) {
 		rt.setVisible(false);
 		HomeEmpleado gc= new HomeEmpleado(this,this.getModel());
@@ -196,31 +202,37 @@ public class ControllerEmp implements ControllerInterface{
 	}
 
 	
+    @Override
 	public ResultSet getRSProd(String s) {
 		return null;
 	}
 	
 	
+    @Override
 	public boolean agregarStock(int nombre, int cant) {
 		return false;
 	}
         
 	
+    @Override
 	public boolean quitarStock(int nombre, int cant) {
 		return false;
 	}
 
 	
+    @Override
 	public boolean addProducto(String nombre, double precio, String string, String string2) {
 		return false;
 	}
 	
 	
+    @Override
 	public boolean clearProducto(int text) {
 		return false;
 	}
 
 	
+    @Override
 	public ResultSet getRSStock() {
 		try {
 			return model.getCargaBox().CargarStock();
@@ -231,6 +243,7 @@ public class ControllerEmp implements ControllerInterface{
 	}
 	
 	
+    @Override
 	public ResultSet setPelisBox() {
 		try {
 			return model.getPeliculas();
@@ -241,6 +254,7 @@ public class ControllerEmp implements ControllerInterface{
 	}
 
 	
+    @Override
 	public boolean esDisponible(int idPelicula, int idAsiento) {
 		try {
 			return model.estaOcupado(idPelicula,idAsiento);
@@ -251,7 +265,7 @@ public class ControllerEmp implements ControllerInterface{
 	}
 
 	
-	public void iniciarCompra(int idPelicula,String fila, int columna) {
+	public void iniciarCompra(int idEvento, String codigoCompra,String fila, int columna) {
 		//String codigoCompra= model.getObjCompra().getCodigo();
 		try {
 			model.comprarEntrada(idEvento, codigoCompra,fila,columna);

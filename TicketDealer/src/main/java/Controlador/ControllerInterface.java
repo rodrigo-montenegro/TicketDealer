@@ -43,6 +43,8 @@ public interface ControllerInterface {
 	void cambiarAHomeAdmin(cargaStock cs);
 	
 	void cambiarAHome2(Login l);
+        
+        void cambiarAHomeEmpleado(ProcesarComprobante rt);
 	
 	void cambiarAPago(FormaDePago fp);
 	
@@ -51,6 +53,8 @@ public interface ControllerInterface {
 	boolean esValido(String a,String b);
 
         ResultSet getRSProd(String s);
+        
+        void cambiarARecTick(HomeEmpleado gc);
 
 	boolean agregarStock(int nombre, int cant);
 

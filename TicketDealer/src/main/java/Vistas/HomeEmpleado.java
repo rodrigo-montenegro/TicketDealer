@@ -13,13 +13,14 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import Controlador.*;
+import Model.*;
 
 /**
  *
  * @author santi
  */
 public class HomeEmpleado extends javax.swing.JFrame implements ViewObserver{
-DefaultTableModel TABLAOBSERVER;
+        DefaultTableModel TABLAOBSERVER;
 	ControllerInterface controller;
 	ModelSubject model;
     /**

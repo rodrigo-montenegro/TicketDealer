@@ -433,7 +433,6 @@ public String getBoxSelect(){
 		} 
     }
 
-	@Override
 	public void update() {
 		this.setBoxs();
 	}

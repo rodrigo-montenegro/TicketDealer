@@ -5,14 +5,14 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.table.DefaultTableModel;
 import Controlador.*;
-
+import Model.*;
 
 //import main.java.controller.ControllerInterface;
 //import main.java.model.ModelSubject;
 
 public class ConsultaStock extends javax.swing.JFrame implements ViewObserver {
     
-	DefaultTableModel   consultaStock;
+    DefaultTableModel   consultaStock;
     ControllerInterface controller;
     ModelSubject model;
     private javax.swing.JButton jButton1;

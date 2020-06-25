@@ -216,10 +216,6 @@ public class ControllerAdmin implements ControllerInterface {
   public void iniciarCompra(int idPelicula, String fila, int columna) {
   }
 
-  public Compra getCompraActual() {
-    return null;
-  }
-
   public boolean cantStock(int id, int cantidad) {
     int stock;
     try {
@@ -245,6 +241,11 @@ public class ControllerAdmin implements ControllerInterface {
 
     @Override
     public void cambiarACompraTickets(CompraTickets c) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public ResultSet setEventosBox() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
