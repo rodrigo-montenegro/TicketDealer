@@ -4,18 +4,23 @@
  * and open the template in the editor.
  */
 package Vistas;
-
+import main.java.controller.*;
+import main.java.controller.ControllerInterface;
 /**
  *
  * @author santi
  */
 public class Pago extends javax.swing.JFrame {
-
+ControllerInterface controller;
     /**
      * Creates new form Pago1
      */
-    public Pago() {
+   public Pago(ControllerInterface controller) {
+    	this.controller=controller;
         initComponents();
+        this.setLocationRelativeTo(null);
+        this.setDefaultCloseOperation(this.EXIT_ON_CLOSE);
+        this.setResizable(false);
     }
 
     /**
@@ -231,11 +236,11 @@ public class Pago extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
+      controller.cambiarAFormaPago(this);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
+        controller.cambiarAConfirma(this);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     /**

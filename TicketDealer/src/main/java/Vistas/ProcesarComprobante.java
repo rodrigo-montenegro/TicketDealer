@@ -3,8 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+//PROCESARCOMPROBANTE=RECIBIRTIKET
 package Vistas;
 
+
+import Controlador.ControllerInterface;
+import main.java.Controlador.*;
+import main.java.Controlador.ControllerInterface;
 /**
  *
  * @author santi
@@ -14,8 +19,12 @@ public class ProcesarComprobante extends javax.swing.JFrame {
     /**
      * Creates new form ProcesarComprobante1
      */
-    public ProcesarComprobante() {
-        initComponents();
+    public ProcesarComprobante(ControllerInterface controller) {
+        this.controller=controller;
+    	initComponents();
+        this.setLocationRelativeTo(null);
+        this.setDefaultCloseOperation(this.EXIT_ON_CLOSE);
+        this.setResizable(false);
     }
 
     /**
@@ -198,7 +207,7 @@ public class ProcesarComprobante extends javax.swing.JFrame {
     }//GEN-LAST:event_FechaActionPerformed
 
     private void ProcesarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProcesarActionPerformed
-        // TODO add your handling code here:
+        controller.cambiarAHomeEmpleado(this);
     }//GEN-LAST:event_ProcesarActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
