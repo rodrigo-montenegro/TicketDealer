@@ -118,5 +118,21 @@ public class ControllerAdmin implements ControllerInterface {
   }
 
   @Override
-	public void cambiarAFormaPago(CompraView c) {//OK!
+  public void cambiarAFormaPago(CompraView c) {// OK!
+  }
+
+  @Override
+  public void cambiarACompraTickets(CompraView c) {// OK!
+  }
+
+  @Override
+  public void cambiarACompra(FormaPago fp) {// OK!
+  }
+
+  @Override
+  public void cambiarAHome2(CompraTickets_v1 compraTickets_v1) {// OK!
+  }
+
+  @Override
+	public void cambiarACompra(CompraTickets_v1 ct) {//OK!
 	}
