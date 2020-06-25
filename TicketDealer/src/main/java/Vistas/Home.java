@@ -4,18 +4,26 @@
  * and open the template in the editor.
  */
 package Vistas;
-
+import main.java.controller.*;
+import main.java.controller.ControllerAdmin;
+import main.java.controller.ControllerEmp;
+import main.java.controller.ControllerInterface;
+import main.java.resources.Compra;
 /**
  *
  * @author santi
  */
 public class Home extends javax.swing.JFrame {
-
+    public ControllerInterface controller;
     /**
      * Creates new form Home1
      */
     public Home() {
+        
+        controller=null;
         initComponents();
+        this.setLocationRelativeTo(null);
+        this.setDefaultCloseOperation(this.EXIT_ON_CLOSE);
     }
 
     /**
@@ -99,24 +107,26 @@ public class Home extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton3LogCliente(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3LogCliente
-        Login login = new Login();
-        login.setVisible(true);
-        this.setVisible(false);
+        controller.cambiarAHome2(this);
+        Compra c=new Compra();
+        controller.getModel().GuardarCompra(c);
         //Vistas.LogCliente.setVisible(true);
     }//GEN-LAST:event_jButton3LogCliente
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-          Login login = new Login();
-        login.setVisible(true);
-        this.setVisible(false);
+         ControllerInterface cont= new ControllerAdmin(controller.getModel(),this);
+        cambiarController(cont);
+    	controller.cambiarALogin(this);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-          Login login = new Login();
-        login.setVisible(true);
-        this.setVisible(false);
+         ControllerInterface cont=new ControllerEmp(controller.getModel(),this);
+    	cambiarController(cont);
+    	Compra c=new Compra();
+        controller.getModel().GuardarCompraEmpleado(c);
+    	controller.cambiarALogin(this);   
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
@@ -154,6 +164,11 @@ public class Home extends javax.swing.JFrame {
             }
         });
     }
+    public void cambiarController(ControllerInterface con) {
+    	 controller=con;
+     }
+
+  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
