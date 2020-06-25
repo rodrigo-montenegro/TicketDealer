@@ -4,18 +4,38 @@
  * and open the template in the editor.
  */
 package Vistas;
+import java.awt.event.ActionEvent;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
+import main.java.controlador.ControllerInterface;
+import main.java.model.Cargador;
+import main.java.model.ModelSubject;
+import main.java.resources.Generador;
 /**
  *
  * @author santi
  */
-public class HomeEmpleado extends javax.swing.JFrame {
-
+public class HomeEmpleado extends javax.swing.JFrame implements ViewObserver{
+DefaultTableModel TABLAOBSERVER;
+	ControllerInterface controller;
+	ModelSubject model;
     /**
      * Creates new form HomeEmpleado1
      */
-    public HomeEmpleado() {
+    public HomeEmpleado(ControllerInterface controller,ModelSubject model) {
+    	this.controller=controller;
+    	this.model=model;
+        TABLAOBSERVER = new DefaultTableModel(null, getColumnas());
         initComponents();
+        this.setLocationRelativeTo(null);
+        this.setResizable(false);
+                
     }
 
     /**
@@ -52,6 +72,11 @@ public class HomeEmpleado extends javax.swing.JFrame {
         });
 
         jButton3.setText("RECIBIR TICKETS");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("INICIAR COMPRA");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -61,6 +86,11 @@ public class HomeEmpleado extends javax.swing.JFrame {
         });
 
         jButton4.setText("CONSULTAR STOCK");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -128,54 +158,60 @@ public class HomeEmpleado extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-          Login login = new Login();
-        login.setVisible(true);
-        this.setVisible(false);
+       controller.cambiarAHome(this);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
+          try {
+                    cleanRows();
+                    setFilas();
+                } catch (SQLException ex) {
+                    Logger.getLogger(HomeEmpleado.class.getName()).log(Level.SEVERE, null, ex);
+                }
+    
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+        controller.cambiarAPelicula(this);
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        controller.cambiarARecTick(this);
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(HomeEmpleado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(HomeEmpleado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(HomeEmpleado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(HomeEmpleado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    @Override
+	public void update() {
+		JOptionPane.showMessageDialog(null, "Hay un cobro o retiro de productos esperando");
+	}
+    
+    private String[] getColumnas() {//OK!
+        String Columna[] = new String[]{"Codigo de compra", "Forma de pago", "Hora", "Precio final"}; //To change body of generated methods, choose Tools | Templates.
+        return Columna;
+    }
+    
+    private void setFilas() throws SQLException {//OK!
+	   Object datos[] = new Object[4];
+	   ResultSet Resultados = controller.getModel().getTablaObserver();
+	   while (Resultados.next()) {
+		   for (int i = 0; i < 4; i++) {
+			   datos[i] = Resultados.getObject(i + 1);
         }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new HomeEmpleado().setVisible(true);
-            }
-        });
+		   TABLAOBSERVER.addRow(datos);
+    }
+}
+        
+     private void cleanRows() {//OK!
+        int a = TABLAOBSERVER.getRowCount() - 1;
+        for (int i = a; i >= 0; i--) {
+        	TABLAOBSERVER.removeRow(TABLAOBSERVER.getRowCount() - 1);
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
